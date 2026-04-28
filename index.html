@@ -1372,45 +1372,68 @@ async function loadData(){
   step(1);
   let activities,portfolio,isLive=false;
   try{
-    document.getElementById('loadSubText').textContent='Loading live data from local server...';
+    document.getElementById('loadSubText').textContent='Loading updated data.json...';
     step(2);
 
-    // SAFE FIX ONLY:
-    // First use the Flask live endpoint (/data), so totals update whenever Kobo has new records.
-    // If /data is not available, the old Kobo/direct/fallback method below still works.
+    // RENDER / SHAREPOINT FIX ONLY:
+    // First load data.json from the same GitHub/Render folder.
+    // Your Windows scheduled task updates this file every 30 minutes.
     try{
-      const localResponse = await fetch('/data?t=' + Date.now(), {cache:'no-store'});
-      if(localResponse.ok){
-        const localData = await localResponse.json();
-        if(localData && localData.success && Array.isArray(localData.activities) && Array.isArray(localData.portfolio)){
+      const jsonResponse = await fetch('data.json?t=' + Date.now(), {cache:'no-store'});
+      if(jsonResponse.ok){
+        const jsonData = await jsonResponse.json();
+        if(jsonData && Array.isArray(jsonData.activities) && Array.isArray(jsonData.portfolio)){
           step(3);
-          activities=parseLiveActivities(localData.activities);
-          portfolio=parseLivePortfolio(localData.portfolio);
+          activities=parseLiveActivities(jsonData.activities);
+          portfolio=parseLivePortfolio(jsonData.portfolio);
           step(4); await new Promise(r=>setTimeout(r,200));
           isLive=true;
-          console.log(`Live data loaded from /data: ${localData.activities.length} activities, ${localData.portfolio.length} portfolio`);
+          console.log(`Updated data loaded from data.json: ${jsonData.activities.length} activities, ${jsonData.portfolio.length} portfolio`);
         } else {
-          throw new Error('Invalid /data response');
+          throw new Error('Invalid data.json response');
         }
       } else {
-        throw new Error('/data endpoint not available');
+        throw new Error('data.json not available');
       }
-    }catch(localErr){
-      console.warn('Local /data fetch failed, trying original Kobo fetch:', localErr.message);
-      document.getElementById('loadSubText').textContent='Attempting live fetch from KoboToolbox...';
+    }catch(jsonErr){
+      console.warn('data.json fetch failed, trying local /data endpoint:', jsonErr.message);
+      document.getElementById('loadSubText').textContent='Loading live data from local server...';
       step(2);
-      const portRaw=await fetchAllKobo(PORTFOLIO_UID);
-      step(3);
-      const actRaw=await fetchAllKobo(ACTIVITIES_UID);
-      step(4); await new Promise(r=>setTimeout(r,200));
-      activities=parseLiveActivities(actRaw);
-      portfolio=parseLivePortfolio(portRaw);
-      isLive=true;
-      console.log(`Live data loaded from Kobo: ${actRaw.length} activities, ${portRaw.length} portfolio`);
+
+      try{
+        const localResponse = await fetch('/data?t=' + Date.now(), {cache:'no-store'});
+        if(localResponse.ok){
+          const localData = await localResponse.json();
+          if(localData && Array.isArray(localData.activities) && Array.isArray(localData.portfolio)){
+            step(3);
+            activities=parseLiveActivities(localData.activities);
+            portfolio=parseLivePortfolio(localData.portfolio);
+            step(4); await new Promise(r=>setTimeout(r,200));
+            isLive=true;
+            console.log(`Live data loaded from /data: ${localData.activities.length} activities, ${localData.portfolio.length} portfolio`);
+          } else {
+            throw new Error('Invalid /data response');
+          }
+        } else {
+          throw new Error('/data endpoint not available');
+        }
+      }catch(localErr){
+        console.warn('Local /data fetch failed, trying original Kobo fetch:', localErr.message);
+        document.getElementById('loadSubText').textContent='Attempting live fetch from KoboToolbox...';
+        step(2);
+        const portRaw=await fetchAllKobo(PORTFOLIO_UID);
+        step(3);
+        const actRaw=await fetchAllKobo(ACTIVITIES_UID);
+        step(4); await new Promise(r=>setTimeout(r,200));
+        activities=parseLiveActivities(actRaw);
+        portfolio=parseLivePortfolio(portRaw);
+        isLive=true;
+        console.log(`Live data loaded from Kobo: ${actRaw.length} activities, ${portRaw.length} portfolio`);
+      }
     }
   }catch(err){
     console.warn('Live fetch failed, using embedded data:',err.message);
-    document.getElementById('loadSubText').textContent='Using saved data (internet not available)...';
+    document.getElementById('loadSubText').textContent='Using embedded saved data...';
     step(3); await new Promise(r=>setTimeout(r,400));
     step(4); await new Promise(r=>setTimeout(r,200));
     activities=EMBEDDED_ACTIVITIES;
@@ -1421,7 +1444,6 @@ async function loadData(){
   ls.classList.add('fade-out');
   setTimeout(()=>{ls.style.display='none';},500);
 }
-
 async function refreshData(){
   const btn=document.getElementById('refreshBtn');
   btn.classList.add('spinning'); btn.disabled=true;
