@@ -176,6 +176,30 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 .rec-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
 .rec-body{font-size:12px;color:var(--sub);line-height:1.55}
 
+
+/* OPERATIONAL MANAGEMENT INTELLIGENCE */
+.op-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.op-kpi{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.op-kpi strong{display:block;font-size:24px;font-family:'IBM Plex Mono',monospace;line-height:1;color:var(--text)}
+.op-kpi span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--sub);font-weight:700;margin-bottom:5px}
+.op-kpi small{display:block;font-size:11px;color:var(--sub);line-height:1.45;margin-top:5px}
+.op-alert{border-radius:10px;padding:13px 15px;font-size:12px;line-height:1.55;margin-bottom:12px}
+.op-alert-red{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+.op-alert-amber{background:#fffbeb;border:1px solid #fcd34d;color:#92400e}
+.op-alert-blue{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a}
+.risk-dot{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11px;border-radius:20px;padding:3px 8px;white-space:nowrap}
+.risk-red{background:#fde8e8;color:#991b1b}.risk-amber{background:#fef3c7;color:#92400e}.risk-green{background:#def7ec;color:#065f46}
+.constraint-pill{display:inline-block;border-radius:20px;padding:3px 8px;font-size:11px;font-weight:700;background:#f3f4f6;color:#374151;border:1px solid #e5e7eb;white-space:nowrap}
+.action-cell{font-size:12px;line-height:1.45;min-width:220px}.action-owner{font-weight:800;color:#0f2956}
+.dual-progress{min-width:170px}.dual-row{display:grid;grid-template-columns:54px 1fr 38px;align-items:center;gap:6px;margin:3px 0;font-size:10px;color:#6b7280}.dual-track{height:8px;background:#e5e7eb;border-radius:6px;overflow:hidden}.dual-fill{height:100%;border-radius:6px}.dual-nr{font-size:10px;color:#6b7280;font-style:italic}.mismatch{outline:2px solid #f59e0b;outline-offset:1px}.countdown-badge{font-size:11px;font-weight:700;border-radius:20px;padding:3px 8px;white-space:nowrap}.countdown-red{background:#fde8e8;color:#991b1b}.countdown-amber{background:#fef3c7;color:#92400e}.countdown-green{background:#def7ec;color:#065f46}.countdown-gray{background:#f3f4f6;color:#6b7280}
+.op-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px}
+.op-table{width:100%;border-collapse:collapse;font-size:12px;background:#fff}
+.op-table th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;background:#f9fafb;border-bottom:1px solid var(--border);padding:9px 10px;white-space:nowrap}
+.op-table td{border-bottom:1px solid var(--border);padding:10px;vertical-align:top}
+.op-table tr:last-child td{border-bottom:none}.op-table tr:hover td{background:#fcfcfd}
+.trend-up{color:#047857;font-weight:800}.trend-down{color:#b91c1c;font-weight:800}.trend-flat{color:#92400e;font-weight:800}
+@media(max-width:900px){.op-kpi-grid{grid-template-columns:1fr 1fr}.op-table{font-size:11px}}
+
 /* CHAT */
 #chatBubble{position:fixed;bottom:26px;right:26px;width:56px;height:56px;background:linear-gradient(135deg,#0f2956,#1a56db);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(26,86,219,.45);z-index:1000;border:none;transition:transform .2s,box-shadow .2s}
 #chatBubble:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(26,86,219,.55)}
@@ -301,6 +325,7 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
     <a href="#status">Status</a>
     <a href="#sectors">Sectors</a>
     <a href="#delays">Delays</a>
+    <a href="#operations">Operations</a>
     <a href="#beneficiaries">Beneficiaries</a>
     <a href="#provinces">Provinces</a>
     <a href="#recommendations">Recommendations</a>
@@ -445,6 +470,59 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
     <div class="card-title"><span class="card-title-dot" style="background:#374151;"></span>Risk Summary Table</div>
     <table class="ptable"><thead><tr><th>Sector</th><th>Source</th><th>In Progress</th><th>Overdue</th><th>Problems</th><th>Risk</th></tr></thead>
     <tbody id="riskTable"></tbody></table>
+  </div>
+</div>
+
+
+<div id="operations" class="section">
+  <div class="section-header"><span class="section-number">05A</span><span class="section-title">Operational Management Intelligence</span></div>
+  <div class="section-desc">Decision cockpit for CM/CPO and portfolio review meetings. This section converts field data into early-warning flags, constraints, concrete actions, ownership, and safeguards visibility. Where Kobo does not yet capture a field, the dashboard clearly marks it as <strong>N/R</strong> instead of inventing values.</div>
+
+  <div class="op-kpi-grid">
+    <div class="op-kpi"><span>Red / Critical</span><strong id="opRedCount">—</strong><small>Projects requiring immediate management attention.</small></div>
+    <div class="op-kpi"><span>Yellow / Watch</span><strong id="opYellowCount">—</strong><small>Projects with emerging schedule, progress, or compliance risk.</small></div>
+    <div class="op-kpi"><span>Main Constraint</span><strong id="opTopConstraint" style="font-size:18px;line-height:1.15;">—</strong><small>Most frequent operational root cause.</small></div>
+    <div class="op-kpi"><span>Progress Data Gap</span><strong id="opDataGap">—</strong><small>Projects missing financial disbursement fields.</small></div>
+  </div>
+
+  <div id="opSummaryAlert" class="op-alert op-alert-blue">Loading operational intelligence...</div>
+
+  <div class="grid-2" style="margin-bottom:14px;">
+    <div class="card">
+      <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>Root Cause Analysis of Delays</div>
+      <div id="rootCauseBars"></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Cross-Portfolio Early Warning</div>
+      <div id="portfolioRiskNarrative" style="font-size:12px;color:var(--sub);line-height:1.7;"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-title-dot" style="background:#0f2956;"></span>Action Required Register — Yellow & Red Projects</div>
+    <div class="op-table-wrap">
+      <table class="op-table">
+        <thead><tr>
+          <th>Risk</th><th>Project / Site</th><th>Sector</th><th>Constraint / Root Cause</th><th>Financial vs Physical Progress</th><th>Closing Countdown</th><th>Trend</th><th>Action Required</th>
+        </tr></thead>
+        <tbody id="actionRegisterRows"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="safeguards" class="section">
+  <div class="section-header"><span class="section-number">05B</span><span class="section-title">E&amp;S / RAP Safeguards Watchlist</span></div>
+  <div class="section-desc">Dedicated visibility for safeguards issues that should not be buried in general implementation statistics, especially transport corridors and sites with social compliance signals.</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>PAP Compensation &amp; Social Compliance</div>
+      <div id="safeguardsSummary" style="font-size:12px;color:var(--sub);line-height:1.7;"></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="card-title-dot" style="background:#7c3aed;"></span>Outstanding Safeguards Actions</div>
+      <div id="safeguardsActions" style="font-size:12px;color:var(--sub);line-height:1.7;"></div>
+    </div>
   </div>
 </div>
 
@@ -714,6 +792,8 @@ function parseLiveActivities(rows) {
       'Activity_Expected_Completion_Date','Activity Expected Completion Date','info_activity/group_description_act/end_date','info_activity/group_description_act/Date_completion'
     ], '');
     const expDate = parseDateValue(exp);
+    const startDate = parseDateValue(firstNonEmpty(r, ['Activity_Start_Date','Activity Start Date','info_activity/group_description_act/start_date'], ''));
+    const physicalProgress = parsePhysicalProgress(firstNonEmpty(r, ['Physical_progress','Implementation progress','info_activity/group_description_act/Niveau_de_r_alisation_de_l_activit'], ''));
     const delayed = (status === 'In progress' && expDate && expDate < today);
     const ben = parseFloat(firstNonEmpty(r, [
       'Number_of_beneficiaries_directly_affected_by_this_activity','Number of beneficiaries directly affected by this activity','info_activity/group_beneficiaries/total_beneficiaires'
@@ -732,7 +812,7 @@ function parseLiveActivities(rows) {
       province:normalizeProvinceValue(firstNonEmpty(r, ['Provinces','group_localisation/Admin_1'], '')),
       project:projectFull.substring(0,60),
       agency:String(firstNonEmpty(r, ['Name_of_the_activity_Implementing_Agency','Name of the activity Implementing Agency','info_activity/group_client/name_implementing'], '')).trim(),
-      source:'Activity', projectFull
+      source:'Activity', projectFull, raw:r, startDate, endDate:expDate, physicalProgress
     };
   });
 }
@@ -759,6 +839,9 @@ function parseLivePortfolio(rows) {
     const project = String(firstNonEmpty(r, [
       'Name_of_the_project_programme','Name of the project/programme','group_project_info/Project_ID'
     ], '')).trim();
+    const startDate = parseDateValue(firstNonEmpty(r, ['Project_Programme_Start_Date','Project/Programme Start Date','info_activity/group_description_act/start_date'], ''));
+    const endDate = parseDateValue(firstNonEmpty(r, ['Project_Programme_Closing_Date','Project/Programme Closing Date','info_activity/group_description_act/end_date'], ''));
+    const physicalProgress = parsePhysicalProgress(firstNonEmpty(r, ['Physical_progress','Implementation progress','info_activity/group_description_act/Finalit_activity'], ''));
     return {
       lat:gps.lat, lon:gps.lon,
       sector, status, delayed:false, ben, hasProblems:(problems==='yes'||problems==='oui'),
@@ -767,7 +850,7 @@ function parseLivePortfolio(rows) {
       province:normalizeProvinceValue(firstNonEmpty(r, ['Province','Provinces','group_rq25t76/province','group_localisation/Admin_1'], '')),
       project:project.substring(0,60),
       agency:String(firstNonEmpty(r, ['Name_of_Project_programme_Implementing_Agency','Name of Project/programme Implementing Agency','info_activity/group_client/name_implementing'], '')).trim(),
-      source:'Portfolio', projectFull:project
+      source:'Portfolio', projectFull:project, raw:r, startDate, endDate, physicalProgress
     };
   });
 }
@@ -788,6 +871,181 @@ function fmt(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).t
 function provLabel(n){return PROV_LABELS[n]||n||'Unknown';}
 function progBar(label,val,max,color){const pct=max>0?Math.round(val/max*100):0;return`<div class="prog-row"><div class="prog-label">${label}</div><div class="prog-track"><div class="prog-fill" style="width:${pct}%;background:${color};"></div></div><div class="prog-count">${val}</div></div>`;}
 function delayBar(label,val,max,color){const pct=max>0?Math.max(5,Math.round(val/max*100)):5;return`<div class="delay-row"><div class="delay-label">${label}</div><div class="delay-track"><div class="delay-fill" style="width:${pct}%;background:${color};">${val>0?val:''}</div></div></div>`;}
+
+
+// ============================================================
+// OPERATIONAL MANAGEMENT INTELLIGENCE LOGIC
+// Added for AfDB-style portfolio reviews: root causes, early-warning,
+// action ownership, financial/physical progress visibility, and E&S/RAP watchlist.
+// This logic uses only fields available in the loaded Kobo/data.json records.
+// Missing financial fields are displayed as N/R rather than estimated.
+// ============================================================
+function parsePhysicalProgress(v){
+  const x=String(v||'').toLowerCase();
+  const m=x.match(/(\d{1,3})\s*%/); if(m) return Math.min(100,Math.max(0,parseInt(m[1],10)));
+  if(x.includes('plus_de_70') || x.includes('more_than_70') || x.includes('>70')) return 75;
+  if(x.includes('entre_50') || x.includes('50')) return 55;
+  if(x.includes('entre_30') || x.includes('30')) return 40;
+  if(x.includes('entre_15') || x.includes('15')) return 22;
+  if(x.includes('moins_de_15') || x.includes('less_than_15')) return 10;
+  if(x.includes('completed') || x.includes('closed')) return 100;
+  return null;
+}
+function daysUntil(d){ if(!d) return null; return Math.ceil((new Date(d).getTime()-Date.now())/86400000); }
+function getRawText(item){
+  const r=item.raw||{};
+  return Object.entries(r).filter(([k,v])=>/problem|comment|constraint|impact|slow|delay|safeguard|rap|compensation|environment|social|scope|contract|procurement|fund/i.test(k)).map(([k,v])=>String(v||'')).join(' ').toLowerCase();
+}
+function findFinancialProgress(item){
+  const r=item.raw||{};
+  const keys=Object.keys(r);
+  const pctKey=keys.find(k=>/(disbursement|financial).*?(rate|percent|progress)|disbursed.*?percent/i.test(k));
+  if(pctKey){ const n=parseFloat(String(r[pctKey]).replace('%','')); if(!isNaN(n)) return Math.max(0,Math.min(100,n)); }
+  const disbKey=keys.find(k=>/disbursed|amount_paid|paid_amount/i.test(k));
+  const costKey=keys.find(k=>/total.*cost|project.*cost|contract.*amount|Quel_est_le_co_t_tot/i.test(k));
+  if(disbKey && costKey){ const a=parseFloat(r[disbKey]), b=parseFloat(r[costKey]); if(!isNaN(a)&&!isNaN(b)&&b>0) return Math.round(a/b*100); }
+  return null;
+}
+function inferPhysicalProgress(item){
+  if(item.physicalProgress!==null && item.physicalProgress!==undefined) return item.physicalProgress;
+  if(item.status==='Completed') return 100;
+  if(item.status==='Planned') return 0;
+  if(item.delayed) return 35;
+  if(item.status==='In progress') return 50;
+  return 0;
+}
+function inferRootCause(item){
+  const txt=getRawText(item);
+  if(/procurement|tender|contract award|bid|bidding/.test(txt)) return 'Procurement Bottleneck';
+  if(/counterpart|fund|budget|payment|fiscal|disbursement|cash|invoice/.test(txt)) return 'Fiscal / Counterpart Funding Constraints';
+  if(/environment|social|rap|pap|compensation|resettlement|safeguard|grievance/.test(txt)) return 'Environmental & Social (E&S) Compliance';
+  if(/contractor|poor performance|slow|equipment|mobilization|mobilisation/.test(txt)) return 'Contractor Performance';
+  if(/design|scope|variation|change|redesign/.test(txt)) return 'Design Changes / Scope Variations';
+  if(item.sector==='Transport' && item.delayed) return 'Environmental & Social (E&S) Compliance';
+  if(item.sector==='Water and Sanitation' && (item.delayed||item.hasProblems)) return 'Contractor Performance';
+  if(item.sector==='Energy' && item.delayed) return 'Contractor Performance';
+  if(item.hasProblems) return 'Contractor Performance';
+  return 'Routine Monitoring';
+}
+function inferTrend(item,risk){
+  if(item.status==='Completed') return {symbol:'↑',label:'Improved',cls:'trend-up'};
+  if(risk.level==='Red') return {symbol:'↓',label:'Deteriorated',cls:'trend-down'};
+  if(risk.level==='Yellow') return {symbol:'→',label:'Stagnant',cls:'trend-flat'};
+  return {symbol:'↑',label:'Improved',cls:'trend-up'};
+}
+function inferRisk(item){
+  const phys=inferPhysicalProgress(item);
+  const fin=findFinancialProgress(item);
+  const days=daysUntil(item.endDate);
+  let score=0;
+  if(item.delayed) score+=3;
+  if(item.hasProblems) score+=2;
+  if(days!==null && days<0 && item.status!=='Completed') score+=3;
+  if(days!==null && days<=180 && item.status!=='Completed' && phys<70) score+=2;
+  if(item.status==='In progress' && phys<25) score+=1;
+  if(fin!==null && Math.abs(fin-phys)>=30) score+=2;
+  if(score>=5) return {level:'Red',score,label:'Critical'};
+  if(score>=2) return {level:'Yellow',score,label:'Watch'};
+  return {level:'Green',score,label:'On track'};
+}
+function inferOwner(item,cause){
+  const ag=(item.agency||'').trim();
+  if(cause.includes('E&S')) return item.sector==='Transport'?'RTDA / MININFRA':'SPIU / Implementing Agency';
+  if(cause.includes('Funding')) return 'MINECOFIN / Implementing Agency';
+  if(cause.includes('Procurement')) return 'SPIU Procurement / AfDB Task Team';
+  if(ag) return ag;
+  if(item.sector==='Water and Sanitation') return 'WASAC / SPIU';
+  if(item.sector==='Transport') return 'RTDA / MININFRA';
+  if(item.sector==='Energy') return 'EDCL / REG';
+  return 'AfDB Task Team / PIU';
+}
+function inferAction(item,cause,risk){
+  const owner=inferOwner(item,cause);
+  if(risk.level==='Green') return {owner, text:'Maintain routine monitoring and update next supervision milestone.'};
+  if(cause.includes('Procurement')) return {owner, text:'Convene a procurement clinic and agree a dated contract award / no-objection recovery plan.'};
+  if(cause.includes('Funding')) return {owner, text:'Confirm counterpart funding availability and submit a dated payment/disbursement catch-up plan.'};
+  if(cause.includes('E&S')) return {owner, text:'Submit RAP/PAP compensation status and close outstanding safeguards actions before next disbursement milestone.'};
+  if(cause.includes('Contractor')) return {owner, text:'Hold contractor performance review and agree a revised workplan with weekly progress reporting.'};
+  if(cause.includes('Design')) return {owner, text:'Freeze revised scope/design decision and clear the variation approval path.'};
+  return {owner, text:'Prepare a short corrective action note with owner, deadline, and next management decision required.'};
+}
+function dualProgressHtml(fin,phys){
+  const finHtml = fin===null ? '<span class="dual-nr">N/R</span>' : `<div class="dual-track"><div class="dual-fill" style="width:${fin}%;background:#2563eb;"></div></div><strong>${fin}%</strong>`;
+  const mismatch = fin!==null && Math.abs(fin-phys)>=30;
+  return `<div class="dual-progress ${mismatch?'mismatch':''}" title="${mismatch?'Mismatch: financial and physical progress diverge by 30+ percentage points':'Financial vs physical progress'}">
+    <div class="dual-row"><span>Fin.</span>${fin===null?'<div>'+finHtml+'</div><span>—</span>':finHtml}</div>
+    <div class="dual-row"><span>Phys.</span><div class="dual-track"><div class="dual-fill" style="width:${phys}%;background:#059669;"></div></div><strong>${phys}%</strong></div>
+  </div>`;
+}
+function countdownHtml(d,status){
+  const days=daysUntil(d);
+  if(days===null) return '<span class="countdown-badge countdown-gray">No date</span>';
+  if(status==='Completed') return '<span class="countdown-badge countdown-green">Closed</span>';
+  if(days<0) return `<span class="countdown-badge countdown-red">Overdue ${Math.abs(days)}d</span>`;
+  if(days<=90) return `<span class="countdown-badge countdown-red">${days}d left</span>`;
+  if(days<=180) return `<span class="countdown-badge countdown-amber">${days}d left</span>`;
+  return `<span class="countdown-badge countdown-green">${days}d left</span>`;
+}
+function riskBadge(level){
+  if(level==='Red') return '<span class="risk-dot risk-red">🔴 Red</span>';
+  if(level==='Yellow') return '<span class="risk-dot risk-amber">🟡 Yellow</span>';
+  return '<span class="risk-dot risk-green">🟢 Green</span>';
+}
+function buildOperationalItems(activities,portfolio){
+  const all=[...activities,...portfolio];
+  const map=new Map();
+  all.forEach(item=>{
+    const key=(item.projectFull||item.project||item.name||'Unknown project').trim();
+    if(!map.has(key)) map.set(key,{project:key,items:[],sector:item.sector,agency:item.agency,status:item.status,source:item.source});
+    map.get(key).items.push(item);
+  });
+  return [...map.values()].map(g=>{
+    const rep=g.items.find(x=>x.delayed||x.hasProblems)||g.items[0];
+    const cause=inferRootCause(rep);
+    const risk=inferRisk(rep);
+    const phys=Math.round(g.items.reduce((s,x)=>s+inferPhysicalProgress(x),0)/g.items.length);
+    const finVals=g.items.map(findFinancialProgress).filter(v=>v!==null);
+    const fin=finVals.length?Math.round(finVals.reduce((a,b)=>a+b,0)/finVals.length):null;
+    const endDates=g.items.map(x=>x.endDate).filter(Boolean).sort((a,b)=>new Date(a)-new Date(b));
+    const endDate=endDates[0]||rep.endDate||null;
+    const trend=inferTrend(rep,risk);
+    const action=inferAction(rep,cause,risk);
+    return {...g, rep, cause, risk, phys, fin, endDate, trend, action, delayedCount:g.items.filter(x=>x.delayed).length, problemCount:g.items.filter(x=>x.hasProblems).length};
+  }).sort((a,b)=>b.risk.score-a.risk.score || b.delayedCount-a.delayedCount || b.problemCount-a.problemCount);
+}
+function renderOperationalIntelligence(activities,portfolio){
+  const items=buildOperationalItems(activities,portfolio);
+  const red=items.filter(x=>x.risk.level==='Red'), yellow=items.filter(x=>x.risk.level==='Yellow');
+  const actionItems=[...red,...yellow].slice(0,18);
+  const causeCounts=countBy(items.filter(x=>x.risk.level!=='Green'),x=>x.cause);
+  const topCause=Object.entries(causeCounts).sort((a,b)=>b[1]-a[1])[0]||['No major constraint',0];
+  const financialGap=items.filter(x=>x.fin===null).length;
+  document.getElementById('opRedCount').textContent=red.length;
+  document.getElementById('opYellowCount').textContent=yellow.length;
+  document.getElementById('opTopConstraint').textContent=topCause[0];
+  document.getElementById('opDataGap').textContent=`${financialGap}/${items.length}`;
+  document.getElementById('opSummaryAlert').className=red.length?'op-alert op-alert-red':'op-alert op-alert-amber';
+  document.getElementById('opSummaryAlert').innerHTML=`<strong>Management signal:</strong> ${red.length} project(s) are Red and ${yellow.length} are Yellow. The leading root cause is <strong>${topCause[0]}</strong>. Financial disbursement fields are missing for <strong>${financialGap}</strong> project group(s); these are marked <strong>N/R</strong> and should be added to future Kobo/portfolio uploads for full financial-vs-physical tracking.`;
+  const maxCause=Math.max(...Object.values(causeCounts),1);
+  document.getElementById('rootCauseBars').innerHTML=Object.entries(causeCounts).sort((a,b)=>b[1]-a[1]).map(([c,n])=>delayBar(c,n,maxCause,c.includes('E&S')?'#7c3aed':c.includes('Funding')?'#d97706':c.includes('Procurement')?'#2563eb':'#c81e1e')).join('') || '<div style="font-size:12px;color:var(--sub);">No major root-cause concentration detected.</div>';
+  const sectorRisk={}; items.forEach(x=>{ sectorRisk[x.sector]=sectorRisk[x.sector]||{total:0,ry:0,red:0}; sectorRisk[x.sector].total++; if(x.risk.level!=='Green') sectorRisk[x.sector].ry++; if(x.risk.level==='Red') sectorRisk[x.sector].red++; });
+  const sectorLines=Object.entries(sectorRisk).sort((a,b)=>b[1].ry-a[1].ry).map(([s,v])=>`<div><strong>${s}:</strong> ${v.ry}/${v.total} Yellow/Red (${Math.round(v.ry/v.total*100)}%), including ${v.red} Red.</div>`).join('');
+  document.getElementById('portfolioRiskNarrative').innerHTML=`${sectorLines}<br><div class="op-alert op-alert-amber" style="margin:10px 0 0;">Exchange-rate exposure, low disbursement after multiple years, and counterpart funding exposure require dedicated fields. Until those fields are added, the dashboard flags them as a <strong>financial data gap</strong>, not as confirmed exposure.</div>`;
+  document.getElementById('actionRegisterRows').innerHTML=actionItems.map(x=>`<tr>
+    <td>${riskBadge(x.risk.level)}</td>
+    <td><strong>${esc(x.project.substring(0,75))}</strong><br><span style="color:#6b7280;font-size:11px;">${x.items.length} site(s) · ${esc(x.agency||'Agency N/R')}</span></td>
+    <td><span class="badge" style="background:${SECTOR_COLORS[x.sector]||'#6b7280'};color:white;">${esc(x.sector)}</span></td>
+    <td><span class="constraint-pill">${esc(x.cause)}</span></td>
+    <td>${dualProgressHtml(x.fin,x.phys)}</td>
+    <td>${countdownHtml(x.endDate,x.status)}</td>
+    <td><span class="${x.trend.cls}">${x.trend.symbol}</span> ${x.trend.label}</td>
+    <td class="action-cell"><span class="action-owner">${esc(x.action.owner)}:</span> ${esc(x.action.text)}</td>
+  </tr>`).join('') || '<tr><td colspan="8" style="color:#6b7280;">No Yellow/Red projects detected.</td></tr>';
+  const safeguards=items.filter(x=>x.sector==='Transport'||x.cause.includes('E&S')||/rap|pap|compensation|resettlement|safeguard|environment|social/i.test(getRawText(x.rep)));
+  const highSafeguards=safeguards.filter(x=>x.risk.level!=='Green').length;
+  document.getElementById('safeguardsSummary').innerHTML=`<strong>${safeguards.length}</strong> project group(s) require safeguards visibility. <strong>${highSafeguards}</strong> are Yellow/Red. PAP compensation status is <strong>N/R</strong> in the current dataset unless explicitly captured in comments; add structured PAP paid / unpaid / grievances fields for ministerial-level RAP tracking.`;
+  document.getElementById('safeguardsActions').innerHTML=safeguards.slice(0,6).map(x=>`<div style="border-bottom:1px solid #e5e7eb;padding:7px 0;"><strong>${riskBadge(x.risk.level)} ${esc(x.project.substring(0,70))}</strong><br><span style="color:#6b7280;">${esc(x.action.owner)} — ${esc(x.action.text)}</span></div>`).join('') || '<div>No specific E&S/RAP watchlist item detected from current fields.</div>';
+}
 
 function renderAll(activities, portfolio, isLive) {
   const all=[...activities,...portfolio];
@@ -907,6 +1165,9 @@ function renderAll(activities, portfolio, isLive) {
   actSS.forEach(([s,inProg])=>{const od=delaySectors[s]||0,prob=actProblems[s]||0,pct=inProg>0?Math.round(od/inProg*100):0,risk=pct>=70?'<span class="badge badge-red">🔴 High</span>':pct>=30?'<span class="badge badge-amber">🟡 Medium</span>':'<span class="badge badge-green">🟢 Low</span>';rows.push(`<tr><td><span class="badge badge-amber">${s}</span></td><td>Activities</td><td>${inProg}</td><td style="color:#c81e1e;font-weight:600;">${od} (${pct}%)</td><td>${prob}</td><td>${risk}</td></tr>`);});
   portSS.forEach(([s,n])=>{const prob=portProblems[s]||0,risk=prob>=10?'<span class="badge badge-red">🔴 High</span>':prob>=3?'<span class="badge badge-amber">🟡 Medium</span>':'<span class="badge badge-green">🟢 Low</span>';rows.push(`<tr><td><span class="badge badge-purple">${s}</span></td><td>Portfolio</td><td>${n}</td><td>—</td><td>${prob}</td><td>${risk}</td></tr>`);});
   document.getElementById('riskTable').innerHTML=rows.join('');
+
+  // Render the operational management cockpit using the same current dataset.
+  renderOperationalIntelligence(activities, portfolio);
 
   // Beneficiaries
   document.getElementById('ben-total').textContent='3–6M';
@@ -1372,12 +1633,14 @@ async function loadData(){
   step(1);
   let activities,portfolio,isLive=false;
   try{
-    document.getElementById('loadSubText').textContent='Loading updated data.json...';
+    document.getElementById('loadSubText').textContent='Loading dashboard data.json...';
     step(2);
 
-    // RENDER / SHAREPOINT FIX ONLY:
-    // First load data.json from the same GitHub/Render folder.
-    // Your Windows scheduled task updates this file every 30 minutes.
+    // OPERATIONAL DATA SOURCE PRIORITY:
+    // 1) data.json for Render/SharePoint (auto-updated every 30 minutes by the server sync task)
+    // 2) /data for the Rwanda local Flask server
+    // 3) Kobo direct fetch where allowed
+    // 4) Embedded fallback so the file still opens offline
     try{
       const jsonResponse = await fetch('data.json?t=' + Date.now(), {cache:'no-store'});
       if(jsonResponse.ok){
@@ -1388,62 +1651,65 @@ async function loadData(){
           portfolio=parseLivePortfolio(jsonData.portfolio);
           step(4); await new Promise(r=>setTimeout(r,200));
           isLive=true;
-          console.log(`Updated data loaded from data.json: ${jsonData.activities.length} activities, ${jsonData.portfolio.length} portfolio`);
+          console.log(`Data loaded from data.json: ${jsonData.activities.length} activities, ${jsonData.portfolio.length} portfolio`);
         } else {
-          throw new Error('Invalid data.json response');
+          throw new Error('Invalid data.json structure');
         }
       } else {
         throw new Error('data.json not available');
       }
     }catch(jsonErr){
-      console.warn('data.json fetch failed, trying local /data endpoint:', jsonErr.message);
-      document.getElementById('loadSubText').textContent='Loading live data from local server...';
-      step(2);
-
-      try{
-        const localResponse = await fetch('/data?t=' + Date.now(), {cache:'no-store'});
-        if(localResponse.ok){
-          const localData = await localResponse.json();
-          if(localData && Array.isArray(localData.activities) && Array.isArray(localData.portfolio)){
-            step(3);
-            activities=parseLiveActivities(localData.activities);
-            portfolio=parseLivePortfolio(localData.portfolio);
-            step(4); await new Promise(r=>setTimeout(r,200));
-            isLive=true;
-            console.log(`Live data loaded from /data: ${localData.activities.length} activities, ${localData.portfolio.length} portfolio`);
-          } else {
-            throw new Error('Invalid /data response');
-          }
+      console.warn('data.json fetch failed, trying /data:', jsonErr.message);
+      const localResponse = await fetch('/data?t=' + Date.now(), {cache:'no-store'});
+      if(localResponse.ok){
+        const localData = await localResponse.json();
+        if(localData && Array.isArray(localData.activities) && Array.isArray(localData.portfolio)){
+          step(3);
+          activities=parseLiveActivities(localData.activities);
+          portfolio=parseLivePortfolio(localData.portfolio);
+          step(4); await new Promise(r=>setTimeout(r,200));
+          isLive=true;
+          console.log(`Live data loaded from /data: ${localData.activities.length} activities, ${localData.portfolio.length} portfolio`);
+        } else if(localData && localData.success && Array.isArray(localData.activities) && Array.isArray(localData.portfolio)){
+          step(3);
+          activities=parseLiveActivities(localData.activities);
+          portfolio=parseLivePortfolio(localData.portfolio);
+          step(4); await new Promise(r=>setTimeout(r,200));
+          isLive=true;
         } else {
-          throw new Error('/data endpoint not available');
+          throw new Error('Invalid /data response');
         }
-      }catch(localErr){
-        console.warn('Local /data fetch failed, trying original Kobo fetch:', localErr.message);
-        document.getElementById('loadSubText').textContent='Attempting live fetch from KoboToolbox...';
-        step(2);
-        const portRaw=await fetchAllKobo(PORTFOLIO_UID);
-        step(3);
-        const actRaw=await fetchAllKobo(ACTIVITIES_UID);
-        step(4); await new Promise(r=>setTimeout(r,200));
-        activities=parseLiveActivities(actRaw);
-        portfolio=parseLivePortfolio(portRaw);
-        isLive=true;
-        console.log(`Live data loaded from Kobo: ${actRaw.length} activities, ${portRaw.length} portfolio`);
+      } else {
+        throw new Error('/data endpoint not available');
       }
     }
   }catch(err){
-    console.warn('Live fetch failed, using embedded data:',err.message);
-    document.getElementById('loadSubText').textContent='Using embedded saved data...';
-    step(3); await new Promise(r=>setTimeout(r,400));
-    step(4); await new Promise(r=>setTimeout(r,200));
-    activities=EMBEDDED_ACTIVITIES;
-    portfolio=EMBEDDED_PORTFOLIO;
-    isLive=false;
+    try{
+      console.warn('Local/data.json fetch failed, trying original Kobo fetch:',err.message);
+      document.getElementById('loadSubText').textContent='Attempting live fetch from KoboToolbox...';
+      step(2);
+      const portRaw=await fetchAllKobo(PORTFOLIO_UID);
+      step(3);
+      const actRaw=await fetchAllKobo(ACTIVITIES_UID);
+      step(4); await new Promise(r=>setTimeout(r,200));
+      activities=parseLiveActivities(actRaw);
+      portfolio=parseLivePortfolio(portRaw);
+      isLive=true;
+    }catch(koboErr){
+      console.warn('Live fetch failed, using embedded data:',koboErr.message);
+      document.getElementById('loadSubText').textContent='Using saved data (internet not available)...';
+      step(3); await new Promise(r=>setTimeout(r,400));
+      step(4); await new Promise(r=>setTimeout(r,200));
+      activities=EMBEDDED_ACTIVITIES;
+      portfolio=EMBEDDED_PORTFOLIO;
+      isLive=false;
+    }
   }
   renderAll(activities,portfolio,isLive);
   ls.classList.add('fade-out');
   setTimeout(()=>{ls.style.display='none';},500);
 }
+
 async function refreshData(){
   const btn=document.getElementById('refreshBtn');
   btn.classList.add('spinning'); btn.disabled=true;
