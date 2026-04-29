@@ -294,11 +294,11 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
     <div class="cover-divider"></div>
     <div class="live-badge"><div class="live-dot"></div><span id="dataModeBadgeText">Always up-to-date · Live from KoboToolbox</span></div>
     <div class="cover-meta">
-      <div class="cover-meta-item"><div class="cover-meta-label">Total Records</div><div class="cover-meta-value" id="cov-total">436</div><div class="cover-meta-desc">Activities + Portfolio</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Total Records</div><div class="cover-meta-value" id="cov-total">190</div><div class="cover-meta-desc">Activities + Portfolio</div></div>
       <div class="cover-meta-item"><div class="cover-meta-label">Beneficiaries</div><div class="cover-meta-value" id="cov-ben">3–6M</div><div class="cover-meta-desc" id="cov-ben-desc">Estimated unique beneficiaries</div></div>
-      <div class="cover-meta-item"><div class="cover-meta-label">Overdue Activities</div><div class="cover-meta-value" id="cov-overdue">112</div><div class="cover-meta-desc">Past expected completion</div></div>
-      <div class="cover-meta-item"><div class="cover-meta-label">Activities</div><div class="cover-meta-value" id="cov-act">183</div><div class="cover-meta-desc">Activity-level records</div></div>
-      <div class="cover-meta-item"><div class="cover-meta-label">Portfolio</div><div class="cover-meta-value" id="cov-port">253</div><div class="cover-meta-desc">Portfolio-level records</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Overdue Activities</div><div class="cover-meta-value" id="cov-overdue">0</div><div class="cover-meta-desc">Past expected completion</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Activities</div><div class="cover-meta-value" id="cov-act">190</div><div class="cover-meta-desc">Activity-level records</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Portfolio</div><div class="cover-meta-value" id="cov-port">0</div><div class="cover-meta-desc">Portfolio-level records</div></div>
       <div class="cover-meta-item"><div class="cover-meta-label">GPS Coverage</div><div class="cover-meta-value" id="cov-gps">100%</div><div class="cover-meta-desc">All sites geo-tagged</div></div>
     </div>
     <div class="cover-footer">
@@ -346,9 +346,9 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
   <div class="section-header"><span class="section-number">EXEC</span><span class="section-title">Executive Summary</span></div>
   <div class="exec-box"><h3>For the Country Manager &amp; Country Program Officer</h3><p id="execSummary">Loading...</p></div>
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-accent-bar" style="background:#2563eb;"></div><div class="kpi-label">Total Records</div><div class="kpi-value" id="kpi-total">436</div><div class="kpi-desc" id="kpi-total-desc">183 Activities · 253 Portfolio</div></div>
+    <div class="kpi"><div class="kpi-accent-bar" style="background:#2563eb;"></div><div class="kpi-label">Total Records</div><div class="kpi-value" id="kpi-total">190</div><div class="kpi-desc" id="kpi-total-desc">183 Activities · 253 Portfolio</div></div>
     <div class="kpi"><div class="kpi-accent-bar" style="background:#059669;"></div><div class="kpi-label">Beneficiaries</div><div class="kpi-value" id="kpi-ben">3–6M</div><div class="kpi-desc" id="kpi-ben-desc">Estimated unique beneficiaries</div></div>
-    <div class="kpi"><div class="kpi-accent-bar" style="background:#c81e1e;"></div><div class="kpi-label">Overdue</div><div class="kpi-value" id="kpi-overdue">112</div><div class="kpi-desc" id="kpi-overdue-desc">In-progress past date</div></div>
+    <div class="kpi"><div class="kpi-accent-bar" style="background:#c81e1e;"></div><div class="kpi-label">Overdue</div><div class="kpi-value" id="kpi-overdue">0</div><div class="kpi-desc" id="kpi-overdue-desc">In-progress past date</div></div>
     <div class="kpi"><div class="kpi-accent-bar" style="background:#7c3aed;"></div><div class="kpi-label">Projects</div><div class="kpi-value" id="kpi-projects">27</div><div class="kpi-desc">Unique AfDB-funded</div></div>
     <div class="kpi"><div class="kpi-accent-bar" style="background:#0694a2;"></div><div class="kpi-label">GPS Coverage</div><div class="kpi-value" id="kpi-gps">100%</div><div class="kpi-desc" id="kpi-gps-desc">All sites geo-tagged</div></div>
   </div>
@@ -476,7 +476,7 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 
 <div id="operations" class="section">
   <div class="section-header"><span class="section-number">05A</span><span class="section-title">Operational Management Intelligence</span></div>
-  <div class="section-desc">Decision cockpit for CM/CPO and portfolio review meetings. This section converts field data into early-warning flags, constraints, concrete actions, ownership, and safeguards visibility. Where Kobo does not yet capture a field, the dashboard clearly marks it as <strong>N/R</strong> instead of inventing values.</div>
+  <div class="section-desc">Decision cockpit for Country Manager and Country Program Officer and portfolio review meetings. This section converts field data into early-warning flags, constraints, concrete actions, ownership, and safeguards visibility. Where Kobo does not yet capture a field, the dashboard clearly marks it as <strong>Not reported</strong> instead of inventing values.</div>
 
   <div class="op-kpi-grid">
     <div class="op-kpi"><span>Red / Critical</span><strong id="opRedCount">—</strong><small>Projects requiring immediate management attention.</small></div>
@@ -512,11 +512,11 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 </div>
 
 <div id="safeguards" class="section">
-  <div class="section-header"><span class="section-number">05B</span><span class="section-title">E&amp;S / RAP Safeguards Watchlist</span></div>
+  <div class="section-header"><span class="section-number">05B</span><span class="section-title">Environmental and Social Safeguards and Resettlement Action Plan Watchlist</span></div>
   <div class="section-desc">Dedicated visibility for safeguards issues that should not be buried in general implementation statistics, especially transport corridors and sites with social compliance signals.</div>
   <div class="grid-2">
     <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>PAP Compensation &amp; Social Compliance</div>
+      <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>Project Affected Persons Compensation and Social Compliance</div>
       <div id="safeguardsSummary" style="font-size:12px;color:var(--sub);line-height:1.7;"></div>
     </div>
     <div class="card">
@@ -876,9 +876,9 @@ function delayBar(label,val,max,color){const pct=max>0?Math.max(5,Math.round(val
 // ============================================================
 // OPERATIONAL MANAGEMENT INTELLIGENCE LOGIC
 // Added for AfDB-style portfolio reviews: root causes, early-warning,
-// action ownership, financial/physical progress visibility, and E&S/RAP watchlist.
+// action ownership, financial/physical progress visibility, and Environmental and Social safeguards and Resettlement Action Plan watchlist.
 // This logic uses only fields available in the loaded Kobo/data.json records.
-// Missing financial fields are displayed as N/R rather than estimated.
+// Missing financial fields are displayed as Not reported rather than estimated.
 // ============================================================
 function parsePhysicalProgress(v){
   const x=String(v||'').toLowerCase();
@@ -918,10 +918,10 @@ function inferRootCause(item){
   const txt=getRawText(item);
   if(/procurement|tender|contract award|bid|bidding/.test(txt)) return 'Procurement Bottleneck';
   if(/counterpart|fund|budget|payment|fiscal|disbursement|cash|invoice/.test(txt)) return 'Fiscal / Counterpart Funding Constraints';
-  if(/environment|social|rap|pap|compensation|resettlement|safeguard|grievance/.test(txt)) return 'Environmental & Social (E&S) Compliance';
+  if(/environment|social|rap|pap|compensation|resettlement|safeguard|grievance/.test(txt)) return 'Environmental and Social Compliance';
   if(/contractor|poor performance|slow|equipment|mobilization|mobilisation/.test(txt)) return 'Contractor Performance';
   if(/design|scope|variation|change|redesign/.test(txt)) return 'Design Changes / Scope Variations';
-  if(item.sector==='Transport' && item.delayed) return 'Environmental & Social (E&S) Compliance';
+  if(item.sector==='Transport' && item.delayed) return 'Environmental and Social Compliance';
   if(item.sector==='Water and Sanitation' && (item.delayed||item.hasProblems)) return 'Contractor Performance';
   if(item.sector==='Energy' && item.delayed) return 'Contractor Performance';
   if(item.hasProblems) return 'Contractor Performance';
@@ -950,7 +950,7 @@ function inferRisk(item){
 }
 function inferOwner(item,cause){
   const ag=(item.agency||'').trim();
-  if(cause.includes('E&S')) return item.sector==='Transport'?'RTDA / MININFRA':'SPIU / Implementing Agency';
+  if(cause.includes('Environmental and Social')) return item.sector==='Transport'?'RTDA / MININFRA':'SPIU / Implementing Agency';
   if(cause.includes('Funding')) return 'MINECOFIN / Implementing Agency';
   if(cause.includes('Procurement')) return 'SPIU Procurement / AfDB Task Team';
   if(ag) return ag;
@@ -964,38 +964,77 @@ function inferAction(item,cause,risk){
   if(risk.level==='Green') return {owner, text:'Maintain routine monitoring and update next supervision milestone.'};
   if(cause.includes('Procurement')) return {owner, text:'Convene a procurement clinic and agree a dated contract award / no-objection recovery plan.'};
   if(cause.includes('Funding')) return {owner, text:'Confirm counterpart funding availability and submit a dated payment/disbursement catch-up plan.'};
-  if(cause.includes('E&S')) return {owner, text:'Submit RAP/PAP compensation status and close outstanding safeguards actions before next disbursement milestone.'};
+  if(cause.includes('Environmental and Social')) return {owner, text:'Submit Resettlement Action Plan and Project Affected Persons compensation status, then close outstanding safeguards actions before the next disbursement milestone.'};
   if(cause.includes('Contractor')) return {owner, text:'Hold contractor performance review and agree a revised workplan with weekly progress reporting.'};
   if(cause.includes('Design')) return {owner, text:'Freeze revised scope/design decision and clear the variation approval path.'};
   return {owner, text:'Prepare a short corrective action note with owner, deadline, and next management decision required.'};
 }
 function dualProgressHtml(fin,phys){
-  const finHtml = fin===null ? '<span class="dual-nr">N/R</span>' : `<div class="dual-track"><div class="dual-fill" style="width:${fin}%;background:#2563eb;"></div></div><strong>${fin}%</strong>`;
+  const finHtml = fin===null ? '<span class="dual-nr">Not reported</span>' : `<div class="dual-track"><div class="dual-fill" style="width:${fin}%;background:#2563eb;"></div></div><strong>${fin}%</strong>`;
   const mismatch = fin!==null && Math.abs(fin-phys)>=30;
   return `<div class="dual-progress ${mismatch?'mismatch':''}" title="${mismatch?'Mismatch: financial and physical progress diverge by 30+ percentage points':'Financial vs physical progress'}">
-    <div class="dual-row"><span>Fin.</span>${fin===null?'<div>'+finHtml+'</div><span>—</span>':finHtml}</div>
-    <div class="dual-row"><span>Phys.</span><div class="dual-track"><div class="dual-fill" style="width:${phys}%;background:#059669;"></div></div><strong>${phys}%</strong></div>
+    <div class="dual-row"><span>Financial</span>${fin===null?'<div>'+finHtml+'</div><span>—</span>':finHtml}</div>
+    <div class="dual-row"><span>Physical</span><div class="dual-track"><div class="dual-fill" style="width:${phys}%;background:#059669;"></div></div><strong>${phys}%</strong></div>
   </div>`;
 }
 function countdownHtml(d,status){
   const days=daysUntil(d);
   if(days===null) return '<span class="countdown-badge countdown-gray">No date</span>';
   if(status==='Completed') return '<span class="countdown-badge countdown-green">Closed</span>';
-  if(days<0) return `<span class="countdown-badge countdown-red">Overdue ${Math.abs(days)}d</span>`;
-  if(days<=90) return `<span class="countdown-badge countdown-red">${days}d left</span>`;
-  if(days<=180) return `<span class="countdown-badge countdown-amber">${days}d left</span>`;
-  return `<span class="countdown-badge countdown-green">${days}d left</span>`;
+  if(days<0) return `<span class="countdown-badge countdown-red">Overdue ${Math.abs(days)} days</span>`;
+  if(days<=90) return `<span class="countdown-badge countdown-red">${days} days left</span>`;
+  if(days<=180) return `<span class="countdown-badge countdown-amber">${days} days left</span>`;
+  return `<span class="countdown-badge countdown-green">${days} days left</span>`;
 }
 function riskBadge(level){
   if(level==='Red') return '<span class="risk-dot risk-red">🔴 Red</span>';
   if(level==='Yellow') return '<span class="risk-dot risk-amber">🟡 Yellow</span>';
   return '<span class="risk-dot risk-green">🟢 Green</span>';
 }
+
+function isProjectCode(value){
+  return /^P-[A-Z]{2}-[A-Z0-9]+-\d+/i.test(String(value||'').trim());
+}
+function firstMeaningfulSiteName(group){
+  const candidates=(group.items||[]).map(x=>x.name).filter(Boolean).filter(n=>!isProjectCode(n));
+  return candidates[0] || (group.rep && group.rep.name) || '';
+}
+function managementProjectLabel(group){
+  // Management-facing project identification:
+  // project codes are never used as the primary label; the project/site name is shown first.
+  const project=String(group.project||'').trim();
+  const site=firstMeaningfulSiteName(group);
+  if(isProjectCode(project)){
+    return site ? `Project/Site: ${site} · Project code: ${project}` : `Project code: ${project} · Project/Site: Not reported`;
+  }
+  if(site && site!==project && project.length<35){
+    return `${project} · Project/Site: ${site}`;
+  }
+  return project || site || 'Project or site not named in source data';
+}
+function managementProjectShortLabel(group){
+  return managementProjectLabel(group).replace(/\s+/g,' ').substring(0,160);
+}
+
+function expandStakeholderName(value){
+  if(!value) return 'Responsible stakeholder not reported';
+  return String(value)
+    .replace(/\bAfDB\b/g,'African Development Bank')
+    .replace(/\bRTDA\b/g,'Rwanda Transport Development Agency')
+    .replace(/\bMININFRA\b/g,'Ministry of Infrastructure')
+    .replace(/\bMINECOFIN\b/g,'Ministry of Finance and Economic Planning')
+    .replace(/\bWASAC\b/g,'Water and Sanitation Corporation')
+    .replace(/\bSPIU\b/g,'Single Project Implementation Unit')
+    .replace(/\bPIU\b/g,'Project Implementation Unit')
+    .replace(/\bEDCL\b/g,'Energy Development Corporation Limited')
+    .replace(/\bREG\b/g,'Rwanda Energy Group');
+}
+
 function buildOperationalItems(activities,portfolio){
   const all=[...activities,...portfolio];
   const map=new Map();
   all.forEach(item=>{
-    const key=(item.projectFull||item.project||item.name||'Unknown project').trim();
+    const key=(item.projectFull||item.project||item.name||'Unknown project or site').trim();
     if(!map.has(key)) map.set(key,{project:key,items:[],sector:item.sector,agency:item.agency,status:item.status,source:item.source});
     map.get(key).items.push(item);
   });
@@ -1015,36 +1054,90 @@ function buildOperationalItems(activities,portfolio){
 }
 function renderOperationalIntelligence(activities,portfolio){
   const items=buildOperationalItems(activities,portfolio);
-  const red=items.filter(x=>x.risk.level==='Red'), yellow=items.filter(x=>x.risk.level==='Yellow');
-  const actionItems=[...red,...yellow].slice(0,18);
+  const red=items.filter(x=>x.risk.level==='Red');
+  const yellow=items.filter(x=>x.risk.level==='Yellow');
+
+  // Dynamic correction: include ALL Yellow and Red projects, not only Red and not a fixed top slice.
+  const actionItems=[...red,...yellow];
+
   const causeCounts=countBy(items.filter(x=>x.risk.level!=='Green'),x=>x.cause);
   const topCause=Object.entries(causeCounts).sort((a,b)=>b[1]-a[1])[0]||['No major constraint',0];
   const financialGap=items.filter(x=>x.fin===null).length;
+
   document.getElementById('opRedCount').textContent=red.length;
   document.getElementById('opYellowCount').textContent=yellow.length;
   document.getElementById('opTopConstraint').textContent=topCause[0];
   document.getElementById('opDataGap').textContent=`${financialGap}/${items.length}`;
   document.getElementById('opSummaryAlert').className=red.length?'op-alert op-alert-red':'op-alert op-alert-amber';
-  document.getElementById('opSummaryAlert').innerHTML=`<strong>Management signal:</strong> ${red.length} project(s) are Red and ${yellow.length} are Yellow. The leading root cause is <strong>${topCause[0]}</strong>. Financial disbursement fields are missing for <strong>${financialGap}</strong> project group(s); these are marked <strong>N/R</strong> and should be added to future Kobo/portfolio uploads for full financial-vs-physical tracking.`;
+  document.getElementById('opSummaryAlert').innerHTML=`<strong>Management signal:</strong> ${red.length} project(s) are Red and ${yellow.length} are Yellow. The leading root cause is <strong>${topCause[0]}</strong>. Financial disbursement fields are missing for <strong>${financialGap}</strong> project group(s); these are marked <strong>Not reported</strong> and should be added to future Kobo/portfolio uploads for full financial-vs-physical tracking.`;
+
   const maxCause=Math.max(...Object.values(causeCounts),1);
-  document.getElementById('rootCauseBars').innerHTML=Object.entries(causeCounts).sort((a,b)=>b[1]-a[1]).map(([c,n])=>delayBar(c,n,maxCause,c.includes('E&S')?'#7c3aed':c.includes('Funding')?'#d97706':c.includes('Procurement')?'#2563eb':'#c81e1e')).join('') || '<div style="font-size:12px;color:var(--sub);">No major root-cause concentration detected.</div>';
-  const sectorRisk={}; items.forEach(x=>{ sectorRisk[x.sector]=sectorRisk[x.sector]||{total:0,ry:0,red:0}; sectorRisk[x.sector].total++; if(x.risk.level!=='Green') sectorRisk[x.sector].ry++; if(x.risk.level==='Red') sectorRisk[x.sector].red++; });
-  const sectorLines=Object.entries(sectorRisk).sort((a,b)=>b[1].ry-a[1].ry).map(([s,v])=>`<div><strong>${s}:</strong> ${v.ry}/${v.total} Yellow/Red (${Math.round(v.ry/v.total*100)}%), including ${v.red} Red.</div>`).join('');
-  document.getElementById('portfolioRiskNarrative').innerHTML=`${sectorLines}<br><div class="op-alert op-alert-amber" style="margin:10px 0 0;">Exchange-rate exposure, low disbursement after multiple years, and counterpart funding exposure require dedicated fields. Until those fields are added, the dashboard flags them as a <strong>financial data gap</strong>, not as confirmed exposure.</div>`;
-  document.getElementById('actionRegisterRows').innerHTML=actionItems.map(x=>`<tr>
-    <td>${riskBadge(x.risk.level)}</td>
-    <td><strong>${esc(x.project.substring(0,75))}</strong><br><span style="color:#6b7280;font-size:11px;">${x.items.length} site(s) · ${esc(x.agency||'Agency N/R')}</span></td>
-    <td><span class="badge" style="background:${SECTOR_COLORS[x.sector]||'#6b7280'};color:white;">${esc(x.sector)}</span></td>
-    <td><span class="constraint-pill">${esc(x.cause)}</span></td>
-    <td>${dualProgressHtml(x.fin,x.phys)}</td>
-    <td>${countdownHtml(x.endDate,x.status)}</td>
-    <td><span class="${x.trend.cls}">${x.trend.symbol}</span> ${x.trend.label}</td>
-    <td class="action-cell"><span class="action-owner">${esc(x.action.owner)}:</span> ${esc(x.action.text)}</td>
-  </tr>`).join('') || '<tr><td colspan="8" style="color:#6b7280;">No Yellow/Red projects detected.</td></tr>';
-  const safeguards=items.filter(x=>x.sector==='Transport'||x.cause.includes('E&S')||/rap|pap|compensation|resettlement|safeguard|environment|social/i.test(getRawText(x.rep)));
-  const highSafeguards=safeguards.filter(x=>x.risk.level!=='Green').length;
-  document.getElementById('safeguardsSummary').innerHTML=`<strong>${safeguards.length}</strong> project group(s) require safeguards visibility. <strong>${highSafeguards}</strong> are Yellow/Red. PAP compensation status is <strong>N/R</strong> in the current dataset unless explicitly captured in comments; add structured PAP paid / unpaid / grievances fields for ministerial-level RAP tracking.`;
-  document.getElementById('safeguardsActions').innerHTML=safeguards.slice(0,6).map(x=>`<div style="border-bottom:1px solid #e5e7eb;padding:7px 0;"><strong>${riskBadge(x.risk.level)} ${esc(x.project.substring(0,70))}</strong><br><span style="color:#6b7280;">${esc(x.action.owner)} — ${esc(x.action.text)}</span></div>`).join('') || '<div>No specific E&S/RAP watchlist item detected from current fields.</div>';
+  document.getElementById('rootCauseBars').innerHTML=Object.entries(causeCounts)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([c,n])=>delayBar(c,n,maxCause,c.includes('Environmental and Social')?'#7c3aed':c.includes('Funding')?'#d97706':c.includes('Procurement')?'#2563eb':'#c81e1e'))
+    .join('') || '<div style="font-size:12px;color:var(--sub);">No major root-cause concentration detected.</div>';
+
+  // Keep these sector summary figures exactly as requested, then dynamically list the Red/Yellow projects below each sector.
+  const fixedSectorSummary=[
+    {sector:'Water and Sanitation', line:'Water and Sanitation: 8/9 Yellow/Red (89%), including 7 Red'},
+    {sector:'Transport', line:'Transport: 5/7 Yellow/Red (71%), including 3 Red'},
+    {sector:'Energy', line:'Energy: 4/7 Yellow/Red (57%), including 3 Red'},
+    {sector:'Other', line:'Other: 4/4 Yellow/Red (100%), including 4 Red'},
+    {sector:'Multi-sector', line:'Multi-sector: 1/1 Yellow/Red (100%), including 1 Red'},
+    {sector:'Social/Education', line:'Social/Education: 1/6 Yellow/Red (17%), including 0 Red'}
+  ];
+  const sectorLines=fixedSectorSummary.map(row=>{
+    const sectorItems=items.filter(x=>x.sector===row.sector && x.risk.level!=='Green');
+    const names=[...new Set(sectorItems.map(x=>managementProjectLabel(x)).filter(Boolean))];
+    const nameList=names.length
+      ? `<ul style="margin:5px 0 10px 18px;padding:0;line-height:1.55;">${names.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`
+      : `<div style="margin:5px 0 10px 0;color:#6b7280;">No named Red or Yellow project captured in the current source fields for this sector.</div>`;
+    return `<div style="margin-bottom:8px;"><strong>${row.line}</strong>${nameList}</div>`;
+  }).join('');
+  document.getElementById('portfolioRiskNarrative').innerHTML=`${sectorLines}<div class="op-alert op-alert-amber" style="margin:10px 0 0;">Exchange-rate exposure, low disbursement after multiple years, and counterpart funding exposure require dedicated fields. Until those fields are added, the dashboard flags them as a <strong>financial data gap</strong>, not as confirmed exposure.</div>`;
+
+  document.getElementById('actionRegisterRows').innerHTML=actionItems.map(x=>{
+    const actionText=(x.action && x.action.text) ? x.action.text : 'Action required - details pending';
+    const owner=(x.action && x.action.owner) ? x.action.owner : 'Responsible stakeholder not reported';
+    return `<tr>
+      <td>${riskBadge(x.risk.level)}</td>
+      <td><strong>${esc(managementProjectLabel(x))}</strong><br><span style="color:#6b7280;font-size:11px;">${x.items.length} site(s) · ${esc(expandStakeholderName(x.agency||'Agency Not reported'))}</span></td>
+      <td><span class="badge" style="background:${SECTOR_COLORS[x.sector]||'#6b7280'};color:white;">${esc(x.sector)}</span></td>
+      <td><span class="constraint-pill">${esc(x.cause)}</span></td>
+      <td>${dualProgressHtml(x.fin,x.phys)}</td>
+      <td>${countdownHtml(x.endDate,x.status)}</td>
+      <td><span class="${x.trend.cls}">${x.trend.symbol}</span> ${x.trend.label}</td>
+      <td class="action-cell"><span class="action-owner">${esc(expandStakeholderName(owner))}:</span> ${esc(actionText)}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="8" style="color:#6b7280;">No Yellow/Red projects detected.</td></tr>';
+
+  // Dynamic safeguards reconciliation:
+  // The summary count and the list below are generated from the same array, so they cannot disagree.
+  const safeguards=items.filter(x=>
+    x.sector==='Transport' ||
+    x.cause.includes('Environmental and Social') ||
+    /resettlement|compensation|safeguard|environment|social|grievance|land acquisition|right of way/i.test(getRawText(x.rep))
+  );
+  const highSafeguards=safeguards.filter(x=>x.risk.level!=='Green');
+  const lowerSafeguards=safeguards.filter(x=>x.risk.level==='Green');
+
+  document.getElementById('safeguardsSummary').innerHTML=`<strong>${safeguards.length}</strong> project group(s) require safeguards visibility. <strong>${highSafeguards.length}</strong> are Yellow/Red and are listed in the action panel. Project Affected Persons compensation status is <strong>Not reported</strong> in the current dataset unless explicitly captured in comments; add structured fields for compensation paid, compensation unpaid, grievances, and Resettlement Action Plan implementation status for ministerial-level tracking.`;
+
+  const highHtml=highSafeguards.map(x=>{
+    const raw=getRawText(x.rep);
+    const hasStructuredSafeguardSignal=/resettlement|compensation|safeguard|environment|social|grievance|land acquisition|right of way/i.test(raw);
+    const issue=hasStructuredSafeguardSignal
+      ? x.action.text
+      : 'Safeguard signal present at summary level; not yet reported in structured fields.';
+    return `<div style="border-bottom:1px solid #e5e7eb;padding:7px 0;"><strong>${riskBadge(x.risk.level)} ${esc(managementProjectLabel(x))}</strong><br><span style="color:#6b7280;">${esc(expandStakeholderName(x.action.owner))} — ${esc(issue)}</span></div>`;
+  }).join('');
+
+  const notReportedHtml=lowerSafeguards.length
+    ? `<div style="margin-top:8px;color:#6b7280;"><strong>Not reported / routine watch:</strong><ul style="margin:5px 0 0 18px;padding:0;">${lowerSafeguards.slice(0,8).map(x=>`<li>${esc(managementProjectLabel(x))}</li>`).join('')}</ul></div>`
+    : '';
+
+  document.getElementById('safeguardsActions').innerHTML=highHtml || '<div>No Yellow/Red safeguards watchlist item detected from current fields.</div>';
+  document.getElementById('safeguardsActions').innerHTML += notReportedHtml;
 }
 
 function renderAll(activities, portfolio, isLive) {
@@ -1525,7 +1618,7 @@ The largest sector is <strong>${top[0]}</strong> with <strong>${fmtNum(top[1])}<
 &nbsp;&nbsp;"The portfolio is estimated to reach <strong>3–6 million beneficiaries</strong>" (deduplicated, realistic estimate based on Rwanda's population of ~13M and rural project coverage).`;
   }
 
-  // ── PROVINCE / GEOGRAPHIC ──────────────────────────────────
+  // ── PROVINCE / GEOGResettlement Action PlanHIC ──────────────────────────────────
   if(q.match(/province|district|geographic|location|region|where|east|west|north|south|kigali|map/)){
     const top = m.topProvince || ['N/A',0];
     return `🗺️ <strong>Geographic distribution</strong><br><br>
@@ -1721,5 +1814,6 @@ async function refreshData(){
 
 loadData();
 </script>
+
 </body>
 </html>
