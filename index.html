@@ -198,7 +198,18 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 .op-table td{border-bottom:1px solid var(--border);padding:10px;vertical-align:top}
 .op-table tr:last-child td{border-bottom:none}.op-table tr:hover td{background:#fcfcfd}
 .trend-up{color:#047857;font-weight:800}.trend-down{color:#b91c1c;font-weight:800}.trend-flat{color:#92400e;font-weight:800}
-@media(max-width:900px){.op-kpi-grid{grid-template-columns:1fr 1fr}.op-table{font-size:11px}}
+.current-data-note{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:11px 13px;font-size:12px;color:#475569;line-height:1.6;margin-bottom:12px}
+.ew-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.ew-card{border:1px solid var(--border);border-radius:10px;padding:12px 13px;background:#fff;box-shadow:var(--shadow)}
+.ew-card span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;font-weight:800;margin-bottom:4px}
+.ew-card strong{display:block;font-family:'IBM Plex Mono',monospace;font-size:22px;line-height:1;color:#111827}
+.ew-card small{display:block;color:#6b7280;font-size:11px;line-height:1.45;margin-top:5px}
+.ew-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px}
+.ew-table{width:100%;border-collapse:collapse;font-size:12px;background:#fff}
+.ew-table th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;background:#f9fafb;border-bottom:1px solid var(--border);padding:8px 10px;white-space:nowrap}
+.ew-table td{border-bottom:1px solid var(--border);padding:9px 10px;vertical-align:top}
+.ew-table tr:last-child td{border-bottom:none}
+@media(max-width:900px){.op-kpi-grid,.ew-grid{grid-template-columns:1fr 1fr}.op-table,.ew-table{font-size:11px}}
 
 /* CHAT */
 #chatBubble{position:fixed;bottom:26px;right:26px;width:56px;height:56px;background:linear-gradient(135deg,#0f2956,#1a56db);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(26,86,219,.45);z-index:1000;border:none;transition:transform .2s,box-shadow .2s}
@@ -265,8 +276,8 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
   <div class="load-sub" id="loadSubText">Attempting live fetch from KoboToolbox...</div>
   <div class="load-steps">
     <div class="load-step active" id="step1"><div class="load-step-dot"></div>Connecting to KoboToolbox API</div>
-    <div class="load-step" id="step2"><div class="load-step-dot"></div>Loading Portfolio records</div>
-    <div class="load-step" id="step3"><div class="load-step-dot"></div>Loading Activities records</div>
+    <div class="load-step" id="step2"><div class="load-step-dot"></div>Loading Rwanda Portfolio Mapping records</div>
+    <div class="load-step" id="step3"><div class="load-step-dot"></div>Validating implementation and GPS records</div>
     <div class="load-step" id="step4"><div class="load-step-dot"></div>Rendering dashboard</div>
   </div>
 </div>
@@ -290,15 +301,15 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
       </svg>
     </div>
     <div class="cover-title">Rwanda Portfolio<br>Monitoring Report</div>
-    <div class="cover-sub">Activity Mapping &amp; Programme Overview · <span id="covRecordCount">436</span> Records</div>
+    <div class="cover-sub">Rwanda Portfolio Mapping &amp; Programme Overview · <span id="covRecordCount">436</span> Records</div>
     <div class="cover-divider"></div>
     <div class="live-badge"><div class="live-dot"></div><span id="dataModeBadgeText">Always up-to-date · Live from KoboToolbox</span></div>
     <div class="cover-meta">
-      <div class="cover-meta-item"><div class="cover-meta-label">Total Records</div><div class="cover-meta-value" id="cov-total">190</div><div class="cover-meta-desc">Activities + Portfolio</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Total Records</div><div class="cover-meta-value" id="cov-total">190</div><div class="cover-meta-desc">Unified Rwanda portfolio records</div></div>
       <div class="cover-meta-item"><div class="cover-meta-label">Beneficiaries</div><div class="cover-meta-value" id="cov-ben">3–6M</div><div class="cover-meta-desc" id="cov-ben-desc">Estimated unique beneficiaries</div></div>
-      <div class="cover-meta-item"><div class="cover-meta-label">Overdue Activities</div><div class="cover-meta-value" id="cov-overdue">0</div><div class="cover-meta-desc">Past expected completion</div></div>
-      <div class="cover-meta-item"><div class="cover-meta-label">Activities</div><div class="cover-meta-value" id="cov-act">190</div><div class="cover-meta-desc">Activity-level records</div></div>
-      <div class="cover-meta-item"><div class="cover-meta-label">Portfolio</div><div class="cover-meta-value" id="cov-port">0</div><div class="cover-meta-desc">Portfolio-level records</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Overdue Records</div><div class="cover-meta-value" id="cov-overdue">0</div><div class="cover-meta-desc">Past expected completion</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Projects</div><div class="cover-meta-value" id="cov-act">27</div><div class="cover-meta-desc">Unique AfDB-funded projects</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Geo-tagged Sites</div><div class="cover-meta-value" id="cov-port">0</div><div class="cover-meta-desc">Sites with GPS coordinates</div></div>
       <div class="cover-meta-item"><div class="cover-meta-label">GPS Coverage</div><div class="cover-meta-value" id="cov-gps">100%</div><div class="cover-meta-desc">All sites geo-tagged</div></div>
     </div>
     <div class="cover-footer">
@@ -346,7 +357,7 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
   <div class="section-header"><span class="section-number">EXEC</span><span class="section-title">Executive Summary</span></div>
   <div class="exec-box"><h3>For the Country Manager &amp; Country Program Officer</h3><p id="execSummary">Loading...</p></div>
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-accent-bar" style="background:#2563eb;"></div><div class="kpi-label">Total Records</div><div class="kpi-value" id="kpi-total">190</div><div class="kpi-desc" id="kpi-total-desc">183 Activities · 253 Portfolio</div></div>
+    <div class="kpi"><div class="kpi-accent-bar" style="background:#2563eb;"></div><div class="kpi-label">Total Records</div><div class="kpi-value" id="kpi-total">190</div><div class="kpi-desc" id="kpi-total-desc">Unified Rwanda portfolio records</div></div>
     <div class="kpi"><div class="kpi-accent-bar" style="background:#059669;"></div><div class="kpi-label">Beneficiaries</div><div class="kpi-value" id="kpi-ben">3–6M</div><div class="kpi-desc" id="kpi-ben-desc">Estimated unique beneficiaries</div></div>
     <div class="kpi"><div class="kpi-accent-bar" style="background:#c81e1e;"></div><div class="kpi-label">Overdue</div><div class="kpi-value" id="kpi-overdue">0</div><div class="kpi-desc" id="kpi-overdue-desc">In-progress past date</div></div>
     <div class="kpi"><div class="kpi-accent-bar" style="background:#7c3aed;"></div><div class="kpi-label">Projects</div><div class="kpi-value" id="kpi-projects">27</div><div class="kpi-desc">Unique AfDB-funded</div></div>
@@ -370,8 +381,7 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
     <button class="filter-btn" onclick="filterMap('Multi-sector',this)" style="border-color:#7c3aed;color:#7c3aed;">⬤ Multi-sector</button>
     <button class="filter-btn" onclick="filterMap('Social/Education',this)" style="border-color:#db2777;color:#db2777;">⬤ Social</button>
     <button class="filter-btn" onclick="filterMap('delayed',this)" style="border-color:#c81e1e;color:#c81e1e;">⚠ Overdue</button>
-    <button class="filter-btn" onclick="filterMap('Activity',this)">Activities</button>
-    <button class="filter-btn" onclick="filterMap('Portfolio',this)">Portfolio</button>
+    
   </div>
   <div class="grid-32" style="align-items:start;">
     <div class="map-wrap"><div id="rwandaMap"></div></div>
@@ -392,11 +402,6 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
         <div class="legend-item"><div class="legend-circle" style="background:#c81e1e;border-color:#fee2e2;"></div>⚠ Overdue</div>
       </div>
       <div class="map-legend-panel">
-        <div class="map-legend-title">Source</div>
-        <div class="legend-item"><div class="legend-circle" style="background:#374151;"></div>Activities (circles)</div>
-        <div class="legend-item"><div class="legend-square" style="background:#374151;"></div>Portfolio (squares)</div>
-      </div>
-      <div class="map-legend-panel">
         <div class="map-legend-title">Transport Lines</div>
         <div class="legend-item"><svg width="28" height="10" style="flex-shrink:0;"><line x1="0" y1="5" x2="28" y2="5" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/></svg>Dynamic Transport corridor</div>
         <div style="font-size:10px;color:var(--sub);margin-top:2px;line-height:1.5;">Transport lines are generated automatically from Kobo GPS points for Transport projects. They are indicative corridors, not engineering road alignments.</div>
@@ -411,45 +416,23 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 
 <div id="status" class="section">
   <div class="section-header"><span class="section-number">03</span><span class="section-title">Implementation Status</span></div>
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#2563eb;"></span>Activities Dataset</div>
-      <div style="position:relative;height:190px;"><canvas id="actStatusChart"></canvas></div>
-      <div class="stat-row">
-        <div class="stat-pill"><div class="stat-pill-num" style="color:#2563eb;" id="act-inprog">177</div><div class="stat-pill-label">In Progress</div></div>
-        <div class="stat-pill"><div class="stat-pill-num" style="color:#059669;" id="act-comp">6</div><div class="stat-pill-label">Completed</div></div>
-        <div class="stat-pill"><div class="stat-pill-num" style="color:#d97706;" id="act-plan">0</div><div class="stat-pill-label">Planned</div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#7c3aed;"></span>Portfolio Dataset</div>
-      <div style="position:relative;height:190px;"><canvas id="portStatusChart"></canvas></div>
-      <div class="stat-row">
-        <div class="stat-pill"><div class="stat-pill-num" style="color:#2563eb;" id="port-inprog">217</div><div class="stat-pill-label">In Progress</div></div>
-        <div class="stat-pill"><div class="stat-pill-num" style="color:#059669;" id="port-comp">30</div><div class="stat-pill-label">Completed</div></div>
-        <div class="stat-pill"><div class="stat-pill-num" style="color:#d97706;" id="port-plan">6</div><div class="stat-pill-label">Planned</div></div>
-      </div>
+  <div class="card">
+    <div class="card-title"><span class="card-title-dot" style="background:#2563eb;"></span>Rwanda Portfolio Mapping — Implementation Status</div>
+    <div style="position:relative;height:220px;"><canvas id="unifiedStatusChart"></canvas></div>
+    <div class="stat-row">
+      <div class="stat-pill"><div class="stat-pill-num" style="color:#2563eb;" id="unified-inprog">0</div><div class="stat-pill-label">In Progress</div></div>
+      <div class="stat-pill"><div class="stat-pill-num" style="color:#059669;" id="unified-comp">0</div><div class="stat-pill-label">Completed</div></div>
+      <div class="stat-pill"><div class="stat-pill-num" style="color:#d97706;" id="unified-plan">0</div><div class="stat-pill-label">Planned</div></div>
     </div>
   </div>
 </div>
 
 <div id="sectors" class="section">
   <div class="section-header"><span class="section-number">04</span><span class="section-title">Sectoral Distribution</span></div>
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Activities by Sector</div>
-      <div id="actSectorBars"></div>
-      <div style="position:relative;height:160px;margin-top:10px;"><canvas id="actSectorChart"></canvas></div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#7c3aed;"></span>Portfolio by Sector</div>
-      <div id="portSectorBars"></div>
-      <div style="position:relative;height:160px;margin-top:10px;"><canvas id="portSectorChart"></canvas></div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:14px;">
-    <div class="card-title"><span class="card-title-dot" style="background:#374151;"></span>Combined Sector Comparison</div>
-    <div style="position:relative;height:220px;"><canvas id="combinedSectorChart"></canvas></div>
+  <div class="card">
+    <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Rwanda Portfolio Mapping by Sector</div>
+    <div id="unifiedSectorBars"></div>
+    <div style="position:relative;height:240px;margin-top:10px;"><canvas id="unifiedSectorChart"></canvas></div>
   </div>
 </div>
 
@@ -457,18 +440,18 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
   <div class="section-header"><span class="section-number">05</span><span class="section-title">Delays &amp; Implementation Issues</span></div>
   <div class="grid-2">
     <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>Overdue Activities by Sector</div>
+      <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>Overdue Records by Sector</div>
       <div id="delayBars"></div>
       <div id="delayAlert" style="margin-top:12px;"></div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Problems Reported (Past 6 Months)</div>
+      <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Problems Reported</div>
       <div id="problemBars"></div>
     </div>
   </div>
   <div class="card" style="margin-top:14px;">
     <div class="card-title"><span class="card-title-dot" style="background:#374151;"></span>Risk Summary Table</div>
-    <table class="ptable"><thead><tr><th>Sector</th><th>Source</th><th>In Progress</th><th>Overdue</th><th>Problems</th><th>Risk</th></tr></thead>
+    <table class="ptable"><thead><tr><th>Sector</th><th>Records</th><th>Overdue</th><th>Problems</th><th>Risk</th></tr></thead>
     <tbody id="riskTable"></tbody></table>
   </div>
 </div>
@@ -487,13 +470,33 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 
   <div id="opSummaryAlert" class="op-alert op-alert-blue">Loading operational intelligence...</div>
 
+  <div class="card" id="currentDataEarlyWarningCard" style="margin-bottom:14px;">
+    <div class="card-title"><span class="card-title-dot" style="background:#0f2956;"></span>Current Data Early-Warning — Based Only on Existing Kobo Fields</div>
+    <div class="current-data-note">
+      This panel uses only fields already available in the loaded Kobo/dashboard records: implementation status, delay flag, reported problems, sector, project/site name, agency, district/province, and dates already used by the dashboard. It does not estimate financial progress, physical progress, exchange-rate exposure, or closing-date risk when those fields are not reported.
+    </div>
+    <div class="ew-grid">
+      <div class="ew-card"><span>Immediate attention</span><strong id="ewImmediate">—</strong><small>Delayed records with reported problems.</small></div>
+      <div class="ew-card"><span>Early warning</span><strong id="ewWatch">—</strong><small>Problems reported before/without overdue flag.</small></div>
+      <div class="ew-card"><span>Sector concentration</span><strong id="ewTopSector" style="font-size:16px;line-height:1.15;">—</strong><small>Highest delay/problem concentration.</small></div>
+      <div class="ew-card"><span>Data confidence</span><strong id="ewDataBasis">—</strong><small>Records assessed with current fields.</small></div>
+    </div>
+    <div id="ewNarrative" class="op-alert op-alert-blue" style="margin-bottom:12px;">Loading current-data early-warning logic...</div>
+    <div class="ew-table-wrap">
+      <table class="ew-table">
+        <thead><tr><th>Signal</th><th>Sector</th><th>Records</th><th>Delayed</th><th>Problems</th><th>Management reading</th></tr></thead>
+        <tbody id="ewSectorRows"></tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="grid-2" style="margin-bottom:14px;">
     <div class="card">
       <div class="card-title"><span class="card-title-dot" style="background:#c81e1e;"></span>Root Cause Analysis of Delays</div>
       <div id="rootCauseBars"></div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Cross-Portfolio Early Warning</div>
+      <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Portfolio Early Warning</div>
       <div id="portfolioRiskNarrative" style="font-size:12px;color:var(--sub);line-height:1.7;"></div>
     </div>
   </div>
@@ -547,13 +550,10 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 <div id="provinces" class="section">
   <div class="section-header"><span class="section-number">07</span><span class="section-title">Provincial Distribution</span></div>
   <div class="card" style="margin-bottom:14px;">
-    <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>All Records by Province</div>
+    <div class="card-title"><span class="card-title-dot" style="background:#d97706;"></span>Rwanda Portfolio Mapping by Province</div>
     <div class="prov-strip" id="provStrip"></div>
   </div>
-  <div class="grid-2">
-    <div class="card"><div class="card-title"><span class="card-title-dot" style="background:#2563eb;"></span>Activities by Province</div><div id="actProvBars"></div></div>
-    <div class="card"><div class="card-title"><span class="card-title-dot" style="background:#7c3aed;"></span>Portfolio by Province</div><div id="portProvBars"></div></div>
-  </div>
+  <div class="card"><div class="card-title"><span class="card-title-dot" style="background:#2563eb;"></span>Records by Province</div><div id="unifiedProvBars"></div></div>
 </div>
 
 <div id="recommendations" class="section">
@@ -565,7 +565,7 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
 
 <div class="report-footer">
   <strong>African Development Bank Group — Rwanda Country Office</strong><br>
-  Portfolio Dashboard · Activities &amp; Programme Monitoring · For: Country Manager &amp; Country Program Officer<br>
+  Portfolio Dashboard · Rwanda Portfolio Mapping · For: Country Manager &amp; Country Program Officer<br>
   <span style="opacity:.5;" id="footerDate">—</span>
 </div>
 
@@ -592,7 +592,7 @@ nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
     </div>
   </div>
   <div class="chat-suggestions" id="chatSuggestions">
-    <button class="suggestion-chip" onclick="sendSuggestion(this)">How many activities are overdue?</button>
+    <button class="suggestion-chip" onclick="sendSuggestion(this)">How many records are overdue?</button>
     <button class="suggestion-chip" onclick="sendSuggestion(this)">Which sector has most delays?</button>
     <button class="suggestion-chip" onclick="sendSuggestion(this)">Explain the beneficiaries under validation</button>
     <button class="suggestion-chip" onclick="sendSuggestion(this)">Summary for Country Manager</button>
@@ -1052,8 +1052,68 @@ function buildOperationalItems(activities,portfolio){
     return {...g, rep, cause, risk, phys, fin, endDate, trend, action, delayedCount:g.items.filter(x=>x.delayed).length, problemCount:g.items.filter(x=>x.hasProblems).length};
   }).sort((a,b)=>b.risk.score-a.risk.score || b.delayedCount-a.delayedCount || b.problemCount-a.problemCount);
 }
+function renderCurrentDataEarlyWarning(items,activities,portfolio){
+  const all=[...activities,...portfolio];
+  const total=all.length;
+  const immediateRecords=all.filter(x=>x.delayed && x.hasProblems).length;
+  const watchRecords=all.filter(x=>!x.delayed && x.hasProblems && x.status!=='Completed').length;
+  const delayedOnlyRecords=all.filter(x=>x.delayed && !x.hasProblems).length;
+  const completedRecords=all.filter(x=>x.status==='Completed').length;
+
+  const sectors=[...new Set(all.map(x=>x.sector||'Unspecified'))];
+  const sectorStats=sectors.map(sector=>{
+    const records=all.filter(x=>(x.sector||'Unspecified')===sector);
+    const delayed=records.filter(x=>x.delayed).length;
+    const problems=records.filter(x=>x.hasProblems).length;
+    const inProgress=records.filter(x=>x.status==='In progress').length;
+    const issueRecords=records.filter(x=>x.delayed||x.hasProblems).length;
+    const rate=records.length?Math.round(issueRecords/records.length*100):0;
+    let signal='🟢 Routine watch';
+    let reading='No major delay/problem concentration detected from current fields.';
+    if(delayed>0 && problems>0){
+      signal='🔴 Immediate attention';
+      reading='Delay and reported-problem signals are both present in this sector.';
+    }else if(problems>0){
+      signal='🟡 Early warning';
+      reading='Problems are reported even where records may not yet be overdue.';
+    }else if(delayed>0){
+      signal='🟠 Schedule pressure';
+      reading='Overdue records are present; follow up schedule recovery actions.';
+    }
+    return {sector,records:records.length,delayed,problems,inProgress,issueRecords,rate,signal,reading};
+  }).sort((a,b)=>b.rate-a.rate || b.issueRecords-a.issueRecords || b.records-a.records);
+
+  const top=sectorStats[0]||{sector:'No data',rate:0,issueRecords:0,records:0};
+  const riskClass=immediateRecords>0?'op-alert op-alert-red':(watchRecords>0||delayedOnlyRecords>0?'op-alert op-alert-amber':'op-alert op-alert-blue');
+
+  const setText=(id,val)=>{const el=document.getElementById(id); if(el) el.textContent=val;};
+  setText('ewImmediate', immediateRecords);
+  setText('ewWatch', watchRecords);
+  setText('ewTopSector', top.records?`${top.sector} (${top.rate}%)`:'No data');
+  setText('ewDataBasis', `${total}/${total}`);
+
+  const narrative=document.getElementById('ewNarrative');
+  if(narrative){
+    narrative.className=riskClass;
+    narrative.innerHTML=`<strong>Current-data early warning:</strong> ${immediateRecords} record(s) combine <strong>delay + reported problem</strong>, ${watchRecords} record(s) show <strong>reported problems before/without overdue status</strong>, and ${delayedOnlyRecords} record(s) are <strong>overdue without a reported problem</strong>. This is rule-based analysis from current Kobo fields only; it does not infer missing financial, physical-progress, exchange-rate, or closing-date values.`;
+  }
+
+  const rows=document.getElementById('ewSectorRows');
+  if(rows){
+    rows.innerHTML=sectorStats.map(s=>`<tr>
+      <td><strong>${s.signal}</strong></td>
+      <td><span class="badge" style="background:${SECTOR_COLORS[s.sector]||'#6b7280'};color:white;">${esc(s.sector)}</span></td>
+      <td>${s.records}</td>
+      <td>${s.delayed}</td>
+      <td>${s.problems}</td>
+      <td>${esc(s.reading)} ${s.issueRecords>0?`Issue concentration: ${s.issueRecords}/${s.records} record(s) (${s.rate}%).`:''}</td>
+    </tr>`).join('') || '<tr><td colspan="6" style="color:#6b7280;">No records available for early-warning scoring.</td></tr>';
+  }
+}
+
 function renderOperationalIntelligence(activities,portfolio){
   const items=buildOperationalItems(activities,portfolio);
+  renderCurrentDataEarlyWarning(items,activities,portfolio);
   const red=items.filter(x=>x.risk.level==='Red');
   const yellow=items.filter(x=>x.risk.level==='Yellow');
 
@@ -1151,7 +1211,7 @@ function renderAll(activities, portfolio, isLive) {
   const gpsPct=total>0?Math.round(gpsCount/total*100):0;
   const overdue=activities.filter(r=>r.delayed).length;
   const inProgAct=activities.filter(r=>r.status==='In progress').length;
-  const projects=new Set(portfolio.map(r=>r.projectFull||r.project).filter(Boolean)).size;
+  const projects=new Set(all.map(r=>r.projectFull||r.project).filter(Boolean)).size;
   const actStatus=countBy(activities,r=>r.status);
   const portStatus=countBy(portfolio,r=>r.status);
   const totalInProg=(actStatus['In progress']||0)+(portStatus['In progress']||0);
@@ -1192,12 +1252,12 @@ function renderAll(activities, portfolio, isLive) {
   ['cov-ben','kpi-ben'].forEach(id=>document.getElementById(id).textContent='3–6M');
   const covBenDesc=document.getElementById('cov-ben-desc'); if(covBenDesc) covBenDesc.textContent='Raw reported: 3~6M';
   ['cov-overdue','kpi-overdue'].forEach(id=>document.getElementById(id).textContent=overdue);
-  document.getElementById('cov-act').textContent=actTotal;
-  document.getElementById('cov-port').textContent=portTotal;
+  document.getElementById('cov-act').textContent=projects;
+  document.getElementById('cov-port').textContent=gpsCount;
   ['cov-gps','kpi-gps'].forEach(id=>document.getElementById(id).textContent=gpsPct+'%');
-  document.getElementById('kpi-total-desc').textContent=`${actTotal} Activities · ${portTotal} Portfolio`;
+  document.getElementById('kpi-total-desc').textContent=`Unified Rwanda portfolio mapping records`;
   document.getElementById('kpi-ben-desc').textContent='Raw reported: 3~6M';
-  document.getElementById('kpi-overdue-desc').textContent=`Of ${inProgAct} in-progress activities`;
+  document.getElementById('kpi-overdue-desc').textContent=`Of ${totalInProg} in-progress records`;
   document.getElementById('kpi-projects').textContent=projects;
   document.getElementById('kpi-gps-desc').textContent=`${gpsCount} of ${total} sites geo-tagged`;
   document.getElementById('lastUpdated').textContent=(isLive?'Live fetch: ':'Saved data as of: ')+nowStr;
@@ -1216,32 +1276,26 @@ function renderAll(activities, portfolio, isLive) {
   `;
 
   // Exec summary
-  document.getElementById('execSummary').innerHTML=`As of <strong>${nowStr}</strong>, the AfDB Rwanda portfolio comprises <strong>${total} records</strong> — ${actTotal} activity-level and ${portTotal} programme-level sites — spanning <strong>${projects} distinct projects</strong>. The portfolio is predominantly <strong>Energy-driven</strong> with strong coverage in Transport and Water & Sanitation. <strong>${gpsPct}%</strong> of sites are GPS-tagged. Implementation performance requires attention: <strong>${overdue} of ${inProgAct} in-progress activities (${overdueActPct}%)</strong> have surpassed their expected completion date. Beneficiary reach is presented as an <strong>estimated 3–6M unique beneficiaries</strong>, adjusted for overlap across projects, sectors and catchment areas. ${isLive?'<em style="color:rgba(255,255,255,.5);font-size:12px;">Data fetched live from KoboToolbox.</em>':'<em style="color:rgba(255,255,255,.5);font-size:12px;">Displayed from saved data (April 2026). Connect to internet to fetch latest records.</em>'}`;
+  document.getElementById('execSummary').innerHTML=`As of <strong>${nowStr}</strong>, the AfDB Rwanda portfolio mapping comprises <strong>${total} unified records</strong> spanning <strong>${projects} distinct projects</strong>. The portfolio is predominantly <strong>Energy-driven</strong> with strong coverage in Transport and Water & Sanitation. <strong>${gpsPct}%</strong> of sites are GPS-tagged. Implementation performance requires attention: <strong>${overdue} in-progress records requiring schedule attention</strong> have surpassed their expected completion date. Beneficiary reach is presented as an <strong>estimated 3–6M unique beneficiaries</strong>, adjusted for overlap across projects, sectors and catchment areas. ${isLive?'<em style="color:rgba(255,255,255,.5);font-size:12px;">Data fetched live from KoboToolbox.</em>':'<em style="color:rgba(255,255,255,.5);font-size:12px;">Displayed from saved data (April 2026). Connect to internet to fetch latest records.</em>'}`;
 
   // Map
   buildMap(all.filter(r=>r.lat&&r.lon));
-  document.getElementById('mapCounts').innerHTML=`Total: <strong>${gpsCount}</strong><br>Activities: <strong>${activities.filter(r=>r.lat).length}</strong><br>Portfolio: <strong>${portfolio.filter(r=>r.lat).length}</strong><br>Overdue: <strong style="color:#c81e1e;">${overdue}</strong>`;
+  document.getElementById('mapCounts').innerHTML=`Geo-tagged sites: <strong>${gpsCount}</strong><br>Total records: <strong>${total}</strong><br>Overdue: <strong style="color:#c81e1e;">${overdue}</strong>`;
 
-  // Status charts & pills
-  makeDonut('actStatusChart',[actStatus['In progress']||0,actStatus['Completed']||0,actStatus['Planned']||0],['#2563eb','#059669','#d97706'],['In Progress','Completed','Planned']);
-  makeDonut('portStatusChart',[portStatus['In progress']||0,portStatus['Completed']||0,portStatus['Planned']||0],['#2563eb','#059669','#d97706'],['In Progress','Completed','Planned']);
-  document.getElementById('act-inprog').textContent=actStatus['In progress']||0;
-  document.getElementById('act-comp').textContent=actStatus['Completed']||0;
-  document.getElementById('act-plan').textContent=actStatus['Planned']||0;
-  document.getElementById('port-inprog').textContent=portStatus['In progress']||0;
-  document.getElementById('port-comp').textContent=portStatus['Completed']||0;
-  document.getElementById('port-plan').textContent=portStatus['Planned']||0;
+  // Unified status chart & pills
+  makeDonut('unifiedStatusChart',[totalInProg,totalComp,totalPlan],['#2563eb','#059669','#d97706'],['In Progress','Completed','Planned']);
+  document.getElementById('unified-inprog').textContent=totalInProg;
+  document.getElementById('unified-comp').textContent=totalComp;
+  document.getElementById('unified-plan').textContent=totalPlan;
 
   // Sector bars & charts
   const actSS=Object.entries(actSectors).sort((a,b)=>b[1]-a[1]);
   const portSS=Object.entries(portSectors).sort((a,b)=>b[1]-a[1]);
-  const actMax=Math.max(...actSS.map(e=>e[1]),1), portMax=Math.max(...portSS.map(e=>e[1]),1);
-  document.getElementById('actSectorBars').innerHTML=actSS.map(([s,n])=>progBar(s,n,actMax,SECTOR_COLORS[s]||'#6b7280')).join('');
-  document.getElementById('portSectorBars').innerHTML=portSS.map(([s,n])=>progBar(s,n,portMax,SECTOR_COLORS[s]||'#6b7280')).join('');
-  makeChart('actSectorChart',{type:'bar',data:{labels:actSS.map(e=>e[0]),datasets:[{data:actSS.map(e=>e[1]),backgroundColor:actSS.map(e=>SECTOR_COLORS[e[0]]||'#6b7280'),borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#f3f4f6'},ticks:{color:'#6b7280',font:{size:10}}},y:{grid:{display:false},ticks:{color:'#374151',font:{size:10}}}}}});
-  makeChart('portSectorChart',{type:'bar',data:{labels:portSS.map(e=>e[0]),datasets:[{data:portSS.map(e=>e[1]),backgroundColor:portSS.map(e=>SECTOR_COLORS[e[0]]||'#6b7280'),borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#f3f4f6'},ticks:{color:'#6b7280',font:{size:10}}},y:{grid:{display:false},ticks:{color:'#374151',font:{size:10}}}}}});
-  const allSects=[...new Set([...Object.keys(actSectors),...Object.keys(portSectors)])];
-  makeChart('combinedSectorChart',{type:'bar',data:{labels:allSects,datasets:[{label:`Activities (${actTotal})`,data:allSects.map(s=>actSectors[s]||0),backgroundColor:'rgba(37,99,235,.8)',borderRadius:4,borderSkipped:false},{label:`Portfolio (${portTotal})`,data:allSects.map(s=>portSectors[s]||0),backgroundColor:'rgba(124,58,237,.8)',borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12,boxHeight:12}}},scales:{x:{grid:{display:false},ticks:{color:'#374151',font:{size:10}}},y:{grid:{color:'#f3f4f6'},ticks:{color:'#6b7280',font:{size:10}}}}}});
+  const unifiedSectors=countBy(all,r=>r.sector);
+  const unifiedSS=Object.entries(unifiedSectors).sort((a,b)=>b[1]-a[1]);
+  const unifiedMax=Math.max(...unifiedSS.map(e=>e[1]),1);
+  document.getElementById('unifiedSectorBars').innerHTML=unifiedSS.map(([s,n])=>progBar(s,n,unifiedMax,SECTOR_COLORS[s]||'#6b7280')).join('');
+  makeChart('unifiedSectorChart',{type:'bar',data:{labels:unifiedSS.map(e=>e[0]),datasets:[{data:unifiedSS.map(e=>e[1]),backgroundColor:unifiedSS.map(e=>SECTOR_COLORS[e[0]]||'#6b7280'),borderRadius:4,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#f3f4f6'},ticks:{color:'#6b7280',font:{size:10}}},y:{grid:{display:false},ticks:{color:'#374151',font:{size:10}}}}}});
 
   // Delays
   const delayMax=Math.max(...Object.values(delaySectors),1);
@@ -1255,8 +1309,7 @@ function renderAll(activities, portfolio, isLive) {
 
   // Risk table
   const rows=[];
-  actSS.forEach(([s,inProg])=>{const od=delaySectors[s]||0,prob=actProblems[s]||0,pct=inProg>0?Math.round(od/inProg*100):0,risk=pct>=70?'<span class="badge badge-red">🔴 High</span>':pct>=30?'<span class="badge badge-amber">🟡 Medium</span>':'<span class="badge badge-green">🟢 Low</span>';rows.push(`<tr><td><span class="badge badge-amber">${s}</span></td><td>Activities</td><td>${inProg}</td><td style="color:#c81e1e;font-weight:600;">${od} (${pct}%)</td><td>${prob}</td><td>${risk}</td></tr>`);});
-  portSS.forEach(([s,n])=>{const prob=portProblems[s]||0,risk=prob>=10?'<span class="badge badge-red">🔴 High</span>':prob>=3?'<span class="badge badge-amber">🟡 Medium</span>':'<span class="badge badge-green">🟢 Low</span>';rows.push(`<tr><td><span class="badge badge-purple">${s}</span></td><td>Portfolio</td><td>${n}</td><td>—</td><td>${prob}</td><td>${risk}</td></tr>`);});
+  unifiedSS.forEach(([s,n])=>{const od=delaySectors[s]||0,prob=(actProblems[s]||0)+(portProblems[s]||0),pct=n>0?Math.round(od/n*100):0,risk=(pct>=30||prob>=10)?'<span class="badge badge-red">🔴 High</span>':(pct>=10||prob>=3)?'<span class="badge badge-amber">🟡 Medium</span>':'<span class="badge badge-green">🟢 Low</span>';rows.push(`<tr><td><span class="badge badge-amber">${s}</span></td><td>${n}</td><td style="color:#c81e1e;font-weight:600;">${od} (${pct}%)</td><td>${prob}</td><td>${risk}</td></tr>`);});
   document.getElementById('riskTable').innerHTML=rows.join('');
 
   // Render the operational management cockpit using the same current dataset.
@@ -1269,10 +1322,9 @@ function renderAll(activities, portfolio, isLive) {
   // Provinces
   const provSorted=Object.entries(allProv).sort((a,b)=>b[1]-a[1]).slice(0,5);
   document.getElementById('provStrip').innerHTML=provSorted.map(([name,count],i)=>`<div class="prov-block" style="flex:${count};background:${PROV_COLORS[i]};"><div class="prov-num">${count}</div><div class="prov-name">${provLabel(name)}</div></div>`).join('');
-  const actPS=Object.entries(actProv).sort((a,b)=>b[1]-a[1]).slice(0,5),portPS=Object.entries(portProv).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const actPM=Math.max(...actPS.map(e=>e[1]),1),portPM=Math.max(...portPS.map(e=>e[1]),1);
-  document.getElementById('actProvBars').innerHTML=actPS.map(([p,n],i)=>progBar(provLabel(p),n,actPM,PROV_COLORS[i]||'#6b7280')).join('');
-  document.getElementById('portProvBars').innerHTML=portPS.map(([p,n],i)=>progBar(provLabel(p),n,portPM,PROV_COLORS[i]||'#6b7280')).join('');
+  const unifiedProv=Object.entries(allProv).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const unifiedPM=Math.max(...unifiedProv.map(e=>e[1]),1);
+  document.getElementById('unifiedProvBars').innerHTML=unifiedProv.map(([p,n],i)=>progBar(provLabel(p),n,unifiedPM,PROV_COLORS[i]||'#6b7280')).join('');
 
   // Recommendations
   const recs=[
@@ -1391,9 +1443,7 @@ function buildMap(points){
     const displayLon = Number(pt.lon) + (radius * Math.cos(angle));
     const color=pt.delayed?'#c81e1e':(SECTOR_COLORS[pt.sector]||'#6b7280');
     const s=8;
-    const html=pt.source==='Activity'
-      ?`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${color};border:2px solid rgba(255,255,255,.9);box-shadow:0 1px 4px rgba(0,0,0,.3);"></div>`
-      :`<div style="width:${s}px;height:${s}px;border-radius:2px;background:${color};border:2px solid rgba(255,255,255,.9);box-shadow:0 1px 4px rgba(0,0,0,.3);"></div>`;
+    const html=`<div style="width:${s}px;height:${s}px;border-radius:50%;background:${color};border:2px solid rgba(255,255,255,.9);box-shadow:0 1px 4px rgba(0,0,0,.3);"></div>`;
     const icon=L.divIcon({className:'',html,iconSize:[s,s],iconAnchor:[s/2,s/2]});
     const marker=L.marker([displayLat,displayLon],{icon});
     const bf=pt.ben>0?pt.ben.toLocaleString():'N/A';
@@ -1406,12 +1456,12 @@ function filterMap(type,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
   markerGroup.clearLayers();
   allLayers.forEach(({marker,pt})=>{
-    const show=type==='all'?true:type==='delayed'?pt.delayed:type==='Activity'||type==='Portfolio'?pt.source===type:pt.sector===type;
+    const show=type==='all'?true:type==='delayed'?pt.delayed:pt.sector===type;
     if(show)marker.addTo(markerGroup);
   });
   // Show/hide road lines with Transport filter
   if(window._roadLayers){
-    const showRoads=(type==='all'||type==='Transport'||type==='Activity');
+    const showRoads=(type==='all'||type==='Transport');
     window._roadLayers.forEach(l=>{ try{ showRoads?l.addTo(leafletMap):leafletMap.removeLayer(l); }catch(e){} });
   }
 }
@@ -1462,14 +1512,14 @@ function updateChatContext(activities,portfolio,isLive){
   const nowStr=new Date().toLocaleString('en-GB',{day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
   liveDataSummary=`
 RWANDA AFDB PORTFOLIO DATA (${isLive?'LIVE from KoboToolbox':'Saved data, April 2026'}) — ${nowStr}
-TOTALS: Activities=${activities.length}, Portfolio=${portfolio.length}, Total=${all.length}
+TOTALS: Unified portfolio records=${all.length}
 GPS-tagged: ${all.filter(r=>r.lat&&r.lon).length}/${all.length}
-STATUS (Activities): In Progress=${inProg}, Completed=${activities.filter(r=>r.status==='Completed').length}, Overdue=${overdue} (${inProg>0?Math.round(overdue/inProg*100):0}% of in-progress)
-STATUS (Portfolio): In Progress=${portfolio.filter(r=>r.status==='In progress').length}, Completed=${portfolio.filter(r=>r.status==='Completed').length}
+STATUS ATTENTION: Overdue=${overdue}; In-progress records=${all.filter(r=>r.status==='In progress').length}
+STATUS: In Progress=${all.filter(r=>r.status==='In progress').length}, Completed=${all.filter(r=>r.status==='Completed').length}, Planned=${all.filter(r=>r.status==='Planned').length}
 SECTORS: ${Object.entries(sectors).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`${s}:${n}`).join(', ')}
 OVERDUE BY SECTOR: ${Object.entries(delaySects).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`${s}:${n}`).join(', ')}
 PROVINCES: ${Object.entries(provs).sort((a,b)=>b[1]-a[1]).map(([p,n])=>`${p}:${n}`).join(', ')}
-BENEFICIARIES: Activities raw reported=${actBen.toLocaleString()}, Portfolio raw reported=${portBen.toLocaleString()}, Combined raw reported=${(actBen+portBen).toLocaleString()} — DO NOT PRESENT AS UNIQUE BENEFICIARIES
+BENEFICIARIES: Raw reported=${(actBen+portBen).toLocaleString()} — DO NOT PRESENT AS UNIQUE BENEFICIARIES
 BENEFICIARY NOTE: Raw figures are cumulative/catchment-area values with likely double-counting. Dashboard displays beneficiary total as TO VALIDATE until a deduplicated methodology is confirmed.
 PROJECTS (${projects.length}): ${projects.slice(0,12).join(' | ')}
 `.trim();
@@ -1525,7 +1575,7 @@ function offlineAssistantReply(question){
     return `👋 Hello! I am your <strong>Rwanda Portfolio Assistant</strong>.<br><br>
 I have access to all <strong>${fmtNum(m.totalRecords)} project records</strong> currently loaded (${mode}).<br><br>
 Ask me anything about the portfolio — try:<br>
-• <em>"How many activities are overdue?"</em><br>
+• <em>"How many records are overdue?"</em><br>
 • <em>"Which sector has the most delays?"</em><br>
 • <em>"What is the status of transport projects?"</em><br>
 • <em>"Which province has the most projects?"</em><br>
@@ -1536,8 +1586,7 @@ Ask me anything about the portfolio — try:<br>
   if(q.match(/total|how many|how much|number of|count|436|437|438|record/)){
     return `📊 <strong>Portfolio totals — ${mode}</strong><br><br>
 <strong>${fmtNum(m.totalRecords)}</strong> total records:<br>
-&nbsp;&nbsp;• <strong>${fmtNum(m.activitiesCount)}</strong> Activity-level records (Mapping form)<br>
-&nbsp;&nbsp;• <strong>${fmtNum(m.portfolioCount)}</strong> Portfolio-level records<br><br>
+
 <strong>GPS coverage:</strong> ${fmtNum(m.gpsTagged)} of ${fmtNum(m.totalRecords)} sites geo-tagged<br>
 <strong>Unique projects:</strong> ${fmtNum(m.projectsCount)}<br><br>
 💡 If numbers look old, click <strong>Refresh</strong> in the top nav bar to fetch latest KoboToolbox data.`;
@@ -1548,7 +1597,7 @@ Ask me anything about the portfolio — try:<br>
     const pct = m.inProgressActivities>0 ? Math.round((m.overdue/m.inProgressActivities)*100) : 0;
     const top = m.topDelaySector || ['N/A',0];
     return `⚠️ <strong>Overdue activities</strong><br><br>
-<strong>${fmtNum(m.overdue)}</strong> activities are overdue out of <strong>${fmtNum(m.inProgressActivities)}</strong> in-progress activities (<strong>${pct}%</strong>).<br><br>
+<strong>${fmtNum(m.overdue)}</strong> records are overdue and require schedule attention.<br><br>
 <strong>Overdue by sector:</strong>${makeList(m.delaySects)}<br><br>
 ⚡ The most affected sector is <strong>${top[0]}</strong> with <strong>${fmtNum(top[1])}</strong> overdue activities.<br><br>
 Recommended action: urgent review with implementing agencies in the ${top[0]} sector.`;
@@ -1561,11 +1610,11 @@ Recommended action: urgent review with implementing agencies in the ${top[0]} se
     const totalComp   = (s.actCompleted||0)+(s.portCompleted||0);
     const totalPlan   = (s.actPlanned||0)+(s.portPlanned||0);
     return `✅ <strong>Implementation status</strong><br><br>
-<strong>Activities dataset (${fmtNum(m.activitiesCount)} records)</strong><br>
+<strong>Schedule attention records</strong><br>
 &nbsp;&nbsp;• In Progress: <strong>${fmtNum(s.actInProgress)}</strong><br>
 &nbsp;&nbsp;• Completed: <strong>${fmtNum(s.actCompleted)}</strong><br>
 &nbsp;&nbsp;• Planned / Not yet started: <strong>${fmtNum(s.actPlanned)}</strong><br><br>
-<strong>Portfolio dataset (${fmtNum(m.portfolioCount)} records)</strong><br>
+<strong>Implementation status</strong><br>
 &nbsp;&nbsp;• In Progress: <strong>${fmtNum(s.portInProgress)}</strong><br>
 &nbsp;&nbsp;• Completed: <strong>${fmtNum(s.portCompleted)}</strong><br>
 &nbsp;&nbsp;• Planned / Not yet started: <strong>${fmtNum(s.portPlanned)}</strong><br><br>
@@ -1611,8 +1660,8 @@ The largest sector is <strong>${top[0]}</strong> with <strong>${fmtNum(top[1])}<
   if(q.match(/beneficiar|population|people|reach|impact|how many people/)){
     return `👥 <strong>Beneficiaries & reach</strong><br><br>
 <strong>Important note:</strong> Raw figures from both forms contain significant overlap and cumulative projections. They should <em>not</em> be presented as unique individuals.<br><br>
-<strong>Activities form raw total:</strong> ${fmtBen(m.actBen)}<br>
-<strong>Portfolio form raw total:</strong> ${fmtBen(m.portBen)}<br>
+
+
 <strong>Combined raw total:</strong> ${fmtBen(m.totalBen)}<br><br>
 ✅ <strong>Recommended figure for presentations:</strong><br>
 &nbsp;&nbsp;"The portfolio is estimated to reach <strong>3–6 million beneficiaries</strong>" (deduplicated, realistic estimate based on Rwanda's population of ~13M and rural project coverage).`;
@@ -1653,7 +1702,7 @@ Recommendation: convene urgent review sessions with implementing agencies, espec
     const top = m.topDelaySector || ['N/A',0];
     const topSec = m.topSector || ['N/A',0];
     return `🎯 <strong>Executive Summary — for Country Manager & CPO</strong><br><br>
-<strong>Portfolio size:</strong> ${fmtNum(m.totalRecords)} records (${fmtNum(m.activitiesCount)} activities + ${fmtNum(m.portfolioCount)} portfolio entries)<br>
+<strong>Portfolio size:</strong> ${fmtNum(m.totalRecords)} unified records<br>
 <strong>Data source:</strong> ${mode}<br>
 <strong>Projects:</strong> ${fmtNum(m.projectsCount)} distinct AfDB projects<br>
 <strong>GPS coverage:</strong> ${fmtNum(m.gpsTagged)}/${fmtNum(m.totalRecords)} sites geo-tagged<br><br>
