@@ -856,44 +856,79 @@ function getReportedPhysicalProgress(item){
 }
 
 
+function parseNumberLike(v){
+  if(v===undefined || v===null) return null;
+  if(typeof v === 'number' && !isNaN(v)) return v;
+  const cleaned=String(v).replace(/,/g,'').replace(/\s/g,'').trim();
+  if(!cleaned || cleaned==='-' || cleaned.toLowerCase()==='nan') return null;
+  const n=parseFloat(cleaned);
+  return isNaN(n) ? null : n;
+}
+function findBeneficiaryValue(row){
+  const r=row||{};
+  const preferred=[
+    'ben','beneficiaries','beneficiary','beneficiaries_reached','direct_beneficiaries','total_beneficiaries',
+    'Number_of_direct_beneficiaries_reached_by_this_project_programme',
+    'Number of direct beneficiaries reached by this project/programme',
+    'Number_of_beneficiaries_directly_affected_by_this_activity',
+    'Number of beneficiaries directly affected by this activity',
+    'info_activity/group_beneficiaries/total_beneficiaires'
+  ];
+  for(const k of preferred){
+    const n=parseNumberLike(r[k]);
+    if(n!==null) return n;
+  }
+  for(const [k,v] of Object.entries(r)){
+    if(/beneficiar|beneficiaire|bénéficiaire|people_reached|reached/i.test(k)){
+      const n=parseNumberLike(v);
+      if(n!==null) return n;
+    }
+  }
+  return 0;
+}
+function firstProjectName(row){
+  return String(firstNonEmpty(row||{}, [
+    'projectFull','project_name','project','Project','Name_of_the_project_programme','Name of the project/programme',
+    'Name_of_the_project','Name of the project','group_project_info/Project_ID','Project_ID','project_id'
+  ], '')).trim();
+}
+
+
 function parseLiveActivities(rows) {
   const today = new Date();
   return rows.map(r => {
     const gps = gpsFromRow(r,
-      ['_Localization_using_GPS_latitude','_Localization using GPS_latitude'],
-      ['_Localization_using_GPS_longitude','_Localization using GPS_longitude'],
+      ['lat','latitude','_Localization_using_GPS_latitude','_Localization using GPS_latitude'],
+      ['lon','lng','longitude','_Localization_using_GPS_longitude','_Localization using GPS_longitude'],
       ['group_localisation/gps','gps']
     );
     const sector = normalizeSectorValue(firstNonEmpty(r, [
-      'Activity_sector','Activity sector','info_activity/group_description_act/sector_activity'
+      'sector','Activity_sector','Activity sector','info_activity/group_description_act/sector_activity'
     ], ''));
     const status = normalizeStatusValue(firstNonEmpty(r, [
-      'Activity_Implementation_Status','Activity Implementation Status','info_activity/group_description_act/status_activity'
+      'status','Activity_Implementation_Status','Activity Implementation Status','info_activity/group_description_act/status_activity'
     ], ''));
     const exp = firstNonEmpty(r, [
-      'Activity_Expected_Completion_Date','Activity Expected Completion Date','info_activity/group_description_act/end_date','info_activity/group_description_act/Date_completion'
+      'endDate','expected_completion','Activity_Expected_Completion_Date','Activity Expected Completion Date','info_activity/group_description_act/end_date','info_activity/group_description_act/Date_completion'
     ], '');
     const expDate = parseDateValue(exp);
-    const startDate = parseDateValue(firstNonEmpty(r, ['Activity_Start_Date','Activity Start Date','info_activity/group_description_act/start_date'], ''));
-    const physicalProgress = parsePhysicalProgress(firstNonEmpty(r, ['Physical_progress','Implementation progress','info_activity/group_description_act/Niveau_de_r_alisation_de_l_activit'], ''));
-    const delayed = (status === 'In progress' && expDate && expDate < today);
-    const ben = parseFloat(firstNonEmpty(r, [
-      'Number_of_beneficiaries_directly_affected_by_this_activity','Number of beneficiaries directly affected by this activity','info_activity/group_beneficiaries/total_beneficiaires'
-    ], '0')) || 0;
-    const problems = String(firstNonEmpty(r, [
-      'Has_this_project_encountered_any_significant_problems_in_the_past_6_months_','Has this project encountered any significant problems in the past 6 months?','info_activity/group_problem/problem'
-    ], '')).toLowerCase();
-    const projectFull = String(firstNonEmpty(r, [
-      'Name_of_the_project','Name of the project','group_project_info/Project_ID'
-    ], '')).trim();
+    const startDate = parseDateValue(firstNonEmpty(r, ['startDate','date_collected','Activity_Start_Date','Activity Start Date','info_activity/group_description_act/start_date'], ''));
+    const physicalProgress = parsePhysicalProgress(firstNonEmpty(r, ['physicalProgress','Physical_progress','Implementation progress','info_activity/group_description_act/Niveau_de_r_alisation_de_l_activit'], ''));
+    const delayed = (r.delayed===true || r.delayed==='true') ? true : (status === 'In progress' && expDate && expDate < today);
+    const ben = findBeneficiaryValue(r);
+    const problemsRaw = firstNonEmpty(r, [
+      'hasProblems','has_problem','Has_this_project_encountered_any_significant_problems_in_the_past_6_months_','Has this project encountered any significant problems in the past 6 months?','info_activity/group_problem/problem'
+    ], '');
+    const problems = String(problemsRaw).toLowerCase();
+    const projectFull = firstProjectName(r);
     return {
       lat:gps.lat, lon:gps.lon,
-      sector, status, delayed, ben, hasProblems:(problems==='yes'||problems==='oui'),
-      name:String(firstNonEmpty(r, ['Activity_site_name','Activity site name','info_activity/group_description_act/Site_name'], 'Activity site')).trim(),
-      district:String(firstNonEmpty(r, ['District','group_localisation/Admin_2'], '')).trim(),
-      province:normalizeProvinceValue(firstNonEmpty(r, ['Provinces','group_localisation/Admin_1'], '')),
+      sector, status, delayed, ben, hasProblems:(problems==='yes'||problems==='oui'||problems==='true'||problemsRaw===true),
+      name:String(firstNonEmpty(r, ['name','site','Activity_site_name','Activity site name','info_activity/group_description_act/Site_name'], 'Activity site')).trim(),
+      district:String(firstNonEmpty(r, ['district','District','group_localisation/Admin_2'], '')).trim(),
+      province:normalizeProvinceValue(firstNonEmpty(r, ['province','Provinces','group_localisation/Admin_1'], '')),
       project:projectFull.substring(0,60),
-      agency:String(firstNonEmpty(r, ['Name_of_the_activity_Implementing_Agency','Name of the activity Implementing Agency','info_activity/group_client/name_implementing'], '')).trim(),
+      agency:String(firstNonEmpty(r, ['agency','Name_of_the_activity_Implementing_Agency','Name of the activity Implementing Agency','info_activity/group_client/name_implementing'], '')).trim(),
       source:'Activity', projectFull, raw:r, startDate, endDate:expDate, physicalProgress, verifiedDate:findVerificationDate(r), docLinks:findDocumentLinks(r)
     };
   });
@@ -902,36 +937,33 @@ function parseLiveActivities(rows) {
 function parseLivePortfolio(rows) {
   return rows.map(r => {
     const gps = gpsFromRow(r,
-      ['_GPS_coordinates_latitude','_GPS coordinates_latitude'],
-      ['_GPS_coordinates_longitude','_GPS coordinates_longitude'],
+      ['lat','latitude','_GPS_coordinates_latitude','_GPS coordinates_latitude'],
+      ['lon','lng','longitude','_GPS_coordinates_longitude','_GPS coordinates_longitude'],
       ['group_rq25t76/gps','group_localisation/gps','gps']
     );
     const sector = normalizeSectorValue(firstNonEmpty(r, [
-      'Activity_sector','Activity sector','info_activity/group_description_act/sector_activity','info_activity/group_description_act/Sector_activity'
+      'sector','Activity_sector','Activity sector','info_activity/group_description_act/sector_activity','info_activity/group_description_act/Sector_activity'
     ], ''));
     const status = normalizeStatusValue(firstNonEmpty(r, [
-      'Project_Programme_Implementation_Status','Project/Programme Implementation Status','info_activity/group_description_act/status_activity'
+      'status','Project_Programme_Implementation_Status','Project/Programme Implementation Status','info_activity/group_description_act/status_activity'
     ], ''));
-    const ben = parseFloat(firstNonEmpty(r, [
-      'Number_of_direct_beneficiaries_reached_by_this_project_programme','Number of direct beneficiaries reached by this project/programme','info_activity/group_beneficiaries/total_beneficiaires'
-    ], '0')) || 0;
-    const problems = String(firstNonEmpty(r, [
-      'Has_this_project_programme_encountered_any_significant_problems_in_the_past_6_months_','Has this project/programme encountered any significant problems in the past 6 months?','info_activity/group_problem/problem'
-    ], '')).toLowerCase();
-    const project = String(firstNonEmpty(r, [
-      'Name_of_the_project_programme','Name of the project/programme','group_project_info/Project_ID'
-    ], '')).trim();
-    const startDate = parseDateValue(firstNonEmpty(r, ['Project_Programme_Start_Date','Project/Programme Start Date','info_activity/group_description_act/start_date'], ''));
-    const endDate = parseDateValue(firstNonEmpty(r, ['Project_Programme_Closing_Date','Project/Programme Closing Date','info_activity/group_description_act/end_date'], ''));
-    const physicalProgress = parsePhysicalProgress(firstNonEmpty(r, ['Physical_progress','Implementation progress','info_activity/group_description_act/Finalit_activity'], ''));
+    const ben = findBeneficiaryValue(r);
+    const problemsRaw = firstNonEmpty(r, [
+      'hasProblems','has_problem','Has_this_project_programme_encountered_any_significant_problems_in_the_past_6_months_','Has this project/programme encountered any significant problems in the past 6 months?','info_activity/group_problem/problem'
+    ], '');
+    const problems = String(problemsRaw).toLowerCase();
+    const project = firstProjectName(r);
+    const startDate = parseDateValue(firstNonEmpty(r, ['startDate','date_collected','Project_Programme_Start_Date','Project/Programme Start Date','info_activity/group_description_act/start_date'], ''));
+    const endDate = parseDateValue(firstNonEmpty(r, ['endDate','Project_Programme_Closing_Date','Project/Programme Closing Date','Project/programme expected completion date','info_activity/group_description_act/end_date'], ''));
+    const physicalProgress = parsePhysicalProgress(firstNonEmpty(r, ['physicalProgress','Physical_progress','Implementation progress','info_activity/group_description_act/Finalit_activity'], ''));
     return {
       lat:gps.lat, lon:gps.lon,
-      sector, status, delayed:false, ben, hasProblems:(problems==='yes'||problems==='oui'),
-      name:String(firstNonEmpty(r, ['Project_Programme__site_name','Project/Programme  site name','Village','info_activity/group_description_act/Site_name'], 'Portfolio site')).trim(),
-      district:String(firstNonEmpty(r, ['Departement','District','group_rq25t76/departement','group_localisation/Admin_2'], '')).trim(),
-      province:normalizeProvinceValue(firstNonEmpty(r, ['Province','Provinces','group_rq25t76/province','group_localisation/Admin_1'], '')),
+      sector, status, delayed:(r.delayed===true || r.delayed==='true'), ben, hasProblems:(problems==='yes'||problems==='oui'||problems==='true'||problemsRaw===true),
+      name:String(firstNonEmpty(r, ['name','site','Project_Programme__site_name','Project/Programme  site name','Village','info_activity/group_description_act/Site_name'], 'Portfolio site')).trim(),
+      district:String(firstNonEmpty(r, ['district','Departement','District','group_rq25t76/departement','group_localisation/Admin_2'], '')).trim(),
+      province:normalizeProvinceValue(firstNonEmpty(r, ['province','Province','Provinces','group_rq25t76/province','group_localisation/Admin_1'], '')),
       project:project.substring(0,60),
-      agency:String(firstNonEmpty(r, ['Name_of_Project_programme_Implementing_Agency','Name of Project/programme Implementing Agency','info_activity/group_client/name_implementing'], '')).trim(),
+      agency:String(firstNonEmpty(r, ['agency','Name_of_Project_programme_Implementing_Agency','Name of Project/programme Implementing Agency','info_activity/group_client/name_implementing'], '')).trim(),
       source:'Portfolio', projectFull:project, raw:r, startDate, endDate, physicalProgress, verifiedDate:findVerificationDate(r), docLinks:findDocumentLinks(r)
     };
   });
@@ -1300,13 +1332,20 @@ function renderOperationalIntelligence(activities,portfolio){
 
 
 function computeBeneficiaryMetrics(all){
-  // Beneficiary rule requested for presentation:
-  // Use project/programme-level beneficiary records and count each unique project once.
-  // Activity/site-level beneficiary values are deliberately excluded from the total because the
-  // same project appears many times at different GPS points.
-  const portfolioRows=all.filter(row=>String(row.source||'').toLowerCase()==='portfolio');
-  const base=portfolioRows.length ? portfolioRows : all;
-  const rawPortfolio=base.reduce((sum,row)=>sum+(Number(row.ben)||0),0);
+  // Presentation rule:
+  // 1) Prefer Portfolio Mapping rows with beneficiary values.
+  // 2) If the live endpoint supplies simplified rows or beneficiary values under different names,
+  //    read them from raw fields as well.
+  // 3) Count each unique project/programme once, using the maximum reported beneficiary value.
+  const enriched=(all||[]).map(row=>{
+    const raw=row.raw||{};
+    const ben = Math.max(Number(row.ben)||0, findBeneficiaryValue(raw), findBeneficiaryValue(row));
+    const project = firstProjectName(row) || firstProjectName(raw) || (row.projectFull||row.project||row.name||'Unknown project');
+    const source = String(row.source||raw.source||'').toLowerCase();
+    return {...row, ben, projectFull:project, source};
+  });
+  const portfolioWithBen=enriched.filter(row=>row.source.includes('portfolio') && (Number(row.ben)||0)>0);
+  const base=portfolioWithBen.length ? portfolioWithBen : enriched.filter(row=>(Number(row.ben)||0)>0);
   const groups={};
   base.forEach(row=>{
     const key=(row.projectFull||row.project||row.name||'Unknown project').trim();
@@ -1315,17 +1354,18 @@ function computeBeneficiaryMetrics(all){
   });
   const projectRows=Object.entries(groups).map(([project,rows])=>{
     const maxBen=Math.max(...rows.map(r=>Number(r.ben)||0),0);
-    const sectorCounts={}; rows.forEach(r=>{const s=(r.sector||'Unspecified').trim()||'Unspecified'; sectorCounts[s]=(sectorCounts[s]||0)+1;});
+    const sectorCounts={}; rows.forEach(r=>{const s=normalizeSectorValue(r.sector||'Unspecified'); sectorCounts[s]=(sectorCounts[s]||0)+1;});
     const sector=Object.entries(sectorCounts).sort((a,b)=>b[1]-a[1])[0]?.[0] || 'Unspecified';
-    const dates=rows.map(r=>r.verifiedDate).filter(Boolean).sort((a,b)=>new Date(b)-new Date(a));
+    const dates=rows.map(r=>r.verifiedDate || (r.raw&&findVerificationDate(r.raw))).filter(Boolean).sort((a,b)=>new Date(b)-new Date(a));
     return {project, maxBen, records:rows.length, sector, latestDate:dates[0]||null};
   }).filter(r=>r.maxBen>0).sort((a,b)=>b.maxBen-a.maxBen);
   const total=projectRows.reduce((sum,row)=>sum+row.maxBen,0);
   const sectorTotals={};
   projectRows.forEach(r=>{sectorTotals[r.sector]=(sectorTotals[r.sector]||0)+r.maxBen;});
   const latestDates=projectRows.map(r=>r.latestDate).filter(Boolean).sort((a,b)=>new Date(b)-new Date(a));
-  return {total, rawPortfolio, projectRows, sectorTotals, countedProjects:projectRows.length, totalGroups:Object.keys(groups).length, latestDate:latestDates[0]||null, sourceRows:base.length, usedPortfolio:!!portfolioRows.length};
+  return {total, projectRows, sectorTotals, countedProjects:projectRows.length, totalGroups:Object.keys(groups).length, latestDate:latestDates[0]||null, sourceRows:base.length, usedPortfolio:!!portfolioWithBen.length};
 }
+
 function renderBeneficiaryMethodology(all){
   const m=computeBeneficiaryMetrics(all);
   window._beneficiaryMetrics=m;
