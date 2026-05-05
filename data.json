@@ -16717,7 +16717,12 @@
       "_submitted_by": null,
       "_tags": [],
       "_uuid": "9c856909-8e80-42b9-9c60-c51cda6b3c52",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1777972530,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "ee.kobotoolbox.org:brfzRkRLCHPTKGJI",
       "end": "2026-05-04T16:40:30.507+03:00",
@@ -16804,7 +16809,12 @@
       "_submitted_by": "icyuzuzo",
       "_tags": [],
       "_uuid": "6d120120-02ee-4bf4-96de-3d3ae6da3301",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1777972526,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:1GcGZoeQl8L0jl9a",
       "end": "2026-05-05T09:14:41.194+02:00",
