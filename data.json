@@ -16904,7 +16904,12 @@
       "_submitted_by": "icyuzuzo",
       "_tags": [],
       "_uuid": "e56b7f2e-1256-4572-9375-48c8f27b2fcb",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1778070297,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:1GcGZoeQl8L0jl9a",
       "end": "2026-05-06T13:27:05.333+02:00",
