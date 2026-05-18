@@ -17275,7 +17275,12 @@
       "_submitted_by": null,
       "_tags": [],
       "_uuid": "4d8b795d-1673-41d1-b004-1bb680f4eb40",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1779099161,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "ee.kobotoolbox.org:brfzRkRLCHPTKGJI",
       "end": "2026-05-18T11:11:41.447+03:00",
