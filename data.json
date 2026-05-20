@@ -17368,10 +17368,10 @@
       "_tags": [],
       "_uuid": "a9a56d8b-7075-43b2-8f37-fb30b412c7b6",
       "_validation_status": {
-        "by_whom": "rasmerwanda",
-        "label": "Approved",
-        "timestamp": 1779269055,
-        "uid": "validation_status_approved"
+        "by_whom": "rbstlcollect",
+        "label": "Not Approved",
+        "timestamp": 1779290044,
+        "uid": "validation_status_not_approved"
       },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:Sglrish0BUpCZg3g",
@@ -17455,10 +17455,10 @@
       "_tags": [],
       "_uuid": "11468451-589f-462f-9677-e52567ada003",
       "_validation_status": {
-        "by_whom": "rasmerwanda",
-        "label": "Approved",
-        "timestamp": 1779269051,
-        "uid": "validation_status_approved"
+        "by_whom": "rbstlcollect",
+        "label": "Not Approved",
+        "timestamp": 1779290048,
+        "uid": "validation_status_not_approved"
       },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:Sglrish0BUpCZg3g",
