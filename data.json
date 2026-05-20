@@ -17367,7 +17367,12 @@
       "_submitted_by": "jpntirushwa",
       "_tags": [],
       "_uuid": "a9a56d8b-7075-43b2-8f37-fb30b412c7b6",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1779269055,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:Sglrish0BUpCZg3g",
       "end": "2026-05-15T11:17:12.429+02:00",
@@ -17449,7 +17454,12 @@
       "_submitted_by": "jpntirushwa",
       "_tags": [],
       "_uuid": "11468451-589f-462f-9677-e52567ada003",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1779269051,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:Sglrish0BUpCZg3g",
       "end": "2026-05-20T09:57:50.370+02:00",
