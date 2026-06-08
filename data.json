@@ -17823,7 +17823,12 @@
       "_submitted_by": null,
       "_tags": [],
       "_uuid": "4be79d67-2e16-41d5-81cc-265b7a5782f2",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1780905069,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "ee.kobotoolbox.org:brfzRkRLCHPTKGJI",
       "end": "2026-06-08T09:59:36.513+03:00",
