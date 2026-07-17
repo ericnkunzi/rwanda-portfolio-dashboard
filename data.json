@@ -18221,7 +18221,12 @@
       "_submission_time": "2026-07-17T07:10:17",
       "_submitted_by": "gndacyayisenga",
       "_uuid": "234de248-9ef7-4a2a-ae1c-781a78f2bc5c",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1784275790,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:OyNcF5TqDwE98PUl",
       "end": "2026-07-17T09:09:57.080+02:00",
