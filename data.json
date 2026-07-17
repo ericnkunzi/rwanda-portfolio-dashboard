@@ -18272,9 +18272,80 @@
       "start": "2026-07-17T08:42:40.006+02:00",
       "today": "2026-07-17",
       "username": "gndacyayisenga"
+    },
+    {
+      "__version__": "vJ2a43agKVTmuCLhksmS8d",
+      "_attachments": [
+        {
+          "download_large_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/814020899/attachments/attup48Hc7EsMDR8WLm7mo2N/large/",
+          "download_medium_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/814020899/attachments/attup48Hc7EsMDR8WLm7mo2N/medium/",
+          "download_small_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/814020899/attachments/attup48Hc7EsMDR8WLm7mo2N/small/",
+          "download_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/814020899/attachments/attup48Hc7EsMDR8WLm7mo2N/",
+          "filename": "afdbrasme/attachments/2220399cd64c4d8a82684e21d1b209f2/753a828f-33a5-4214-94fe-fc0f343255fd/1784297959570.jpg",
+          "is_deleted": false,
+          "media_file_basename": "1784297959570.jpg",
+          "mimetype": "image/jpeg",
+          "question_xpath": "group_photo_activity/photo_1",
+          "uid": "attup48Hc7EsMDR8WLm7mo2N"
+        }
+      ],
+      "_geolocation": [
+        -1.576869,
+        30.0627155
+      ],
+      "_id": 814020899,
+      "_status": "submitted_via_web",
+      "_submission_time": "2026-07-17T14:20:30",
+      "_submitted_by": "gndacyayisenga",
+      "_uuid": "753a828f-33a5-4214-94fe-fc0f343255fd",
+      "_validation_status": {},
+      "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
+      "deviceid": "collect:OyNcF5TqDwE98PUl",
+      "end": "2026-07-17T16:20:14.116+02:00",
+      "formhub/uuid": "2220399cd64c4d8a82684e21d1b209f2",
+      "group_enumerator_info/Phone_enum": "0783615305",
+      "group_enumerator_info/comment": "None",
+      "group_enumerator_info/date_survey": "2026-07-17",
+      "group_enumerator_info/name_enum": "NDACYAYISENGA GAETAN ",
+      "group_localisation/Admin_1": "RW4",
+      "group_localisation/Admin_2": "RW45",
+      "group_localisation/PA_ID": "P-RW-FA0-009-RW4-RW45-GIS",
+      "group_localisation/gps": "-1.576869 30.0627155 2264.22705078125 4.412",
+      "group_localisation/village": "GISUNA",
+      "group_localisation/village_id": "GIS",
+      "group_photo_activity/photo_1": "1784297959570.jpg",
+      "group_photo_activity/prep_photo": "photo_person",
+      "group_project_info/Institution_financing": "AfDB",
+      "group_project_info/L_activit_men_e_sur_ce_site_e": "oui",
+      "group_project_info/Project_ID": "P-RW-FA0-009",
+      "group_project_info/pays": "Rwanda",
+      "info_activity/group_beneficiaries/engagement_nechanism": "non",
+      "info_activity/group_beneficiaries/target_benef": "no",
+      "info_activity/group_beneficiaries/total_beneficiaires": "700000",
+      "info_activity/group_client/implementing": "government",
+      "info_activity/group_client/name_implementing": "CCCE ",
+      "info_activity/group_contact/name_contact": "Chao",
+      "info_activity/group_contact/phone_contact": "0784165959",
+      "info_activity/group_contact/role_contact": "project_staff_member",
+      "info_activity/group_description_act/Niveau_de_r_alisation_de_l_activit": "plus_de_70",
+      "info_activity/group_description_act/Site_name": "GICUMBI SUBSTATION ",
+      "info_activity/group_description_act/descr_activity": "CONSTRUCTION OF GICUMBI SUBSTATION ",
+      "info_activity/group_description_act/end_date": "2026-09-01",
+      "info_activity/group_description_act/sector_activity": "energie",
+      "info_activity/group_description_act/start_date": "2024-02-01",
+      "info_activity/group_description_act/status_activity": "in_progress",
+      "info_activity/group_hw7ei31/Pouvez_vous_pr_ciser_le_co_t_d": "oui",
+      "info_activity/group_hw7ei31/Quel_est_le_co_t_tot_de_cette_activit_": "6820235.18",
+      "info_activity/group_hw7ei31/Quelle_est_la_monnaie_de_d_claration_": "usd",
+      "info_activity/group_problem/problem": "no",
+      "meta/instanceID": "uuid:753a828f-33a5-4214-94fe-fc0f343255fd",
+      "meta/rootUuid": "uuid:753a828f-33a5-4214-94fe-fc0f343255fd",
+      "start": "2026-07-17T16:02:15.388+02:00",
+      "today": "2026-07-17",
+      "username": "gndacyayisenga"
     }
   ],
-  "activities_count": 212,
+  "activities_count": 213,
   "portfolio": [
     {
       "__version__": "vAts4KT3WtLJzSLsuVzcvm",
@@ -38628,5 +38699,5 @@
   ],
   "portfolio_count": 253,
   "success": true,
-  "total_count": 465
+  "total_count": 466
 }
