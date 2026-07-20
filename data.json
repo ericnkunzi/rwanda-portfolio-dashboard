@@ -18298,7 +18298,12 @@
       "_submission_time": "2026-07-17T14:20:30",
       "_submitted_by": "gndacyayisenga",
       "_uuid": "753a828f-33a5-4214-94fe-fc0f343255fd",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1784536896,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:OyNcF5TqDwE98PUl",
       "end": "2026-07-17T16:20:14.116+02:00",
