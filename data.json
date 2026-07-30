@@ -18452,7 +18452,12 @@
       "_submission_time": "2026-07-30T10:58:40",
       "_submitted_by": "procyubahiro",
       "_uuid": "759c50c7-49e1-4b35-b650-562f5293686d",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1785419150,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:QLsoq0z9siPGwoeo",
       "end": "2026-07-30T12:58:28.293+02:00",
