@@ -18426,9 +18426,75 @@
       "start": "2026-07-29T15:36:40.373+02:00",
       "today": "2026-07-29",
       "username": "josephshema"
+    },
+    {
+      "__version__": "vJ2a43agKVTmuCLhksmS8d",
+      "_attachments": [
+        {
+          "download_large_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/825943125/attachments/attD2mcqQPdbw46a2tdTtXSU/large/",
+          "download_medium_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/825943125/attachments/attD2mcqQPdbw46a2tdTtXSU/medium/",
+          "download_small_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/825943125/attachments/attD2mcqQPdbw46a2tdTtXSU/small/",
+          "download_url": "https://kf.kobotoolbox.org/api/v2/assets/aGr5kutzkG7nrHiEyH7vCt/data/825943125/attachments/attD2mcqQPdbw46a2tdTtXSU/",
+          "filename": "afdbrasme/attachments/2220399cd64c4d8a82684e21d1b209f2/759c50c7-49e1-4b35-b650-562f5293686d/1785408981007.jpg",
+          "is_deleted": false,
+          "media_file_basename": "1785408981007.jpg",
+          "mimetype": "image/jpeg",
+          "question_xpath": "group_photo_activity/photo_1",
+          "uid": "attD2mcqQPdbw46a2tdTtXSU"
+        }
+      ],
+      "_geolocation": [
+        -1.5150855,
+        30.3837382
+      ],
+      "_id": 825943125,
+      "_status": "submitted_via_web",
+      "_submission_time": "2026-07-30T10:58:40",
+      "_submitted_by": "procyubahiro",
+      "_uuid": "759c50c7-49e1-4b35-b650-562f5293686d",
+      "_validation_status": {},
+      "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
+      "deviceid": "collect:QLsoq0z9siPGwoeo",
+      "end": "2026-07-30T12:58:28.293+02:00",
+      "formhub/uuid": "2220399cd64c4d8a82684e21d1b209f2",
+      "group_enumerator_info/comment": "We are expecting to start the stringing activities within the next two weeks ",
+      "group_enumerator_info/date_survey": "2026-07-30",
+      "group_enumerator_info/name_enum": "Providence cyubahiro ",
+      "group_localisation/Admin_1": "RW5",
+      "group_localisation/Admin_2": "RW52",
+      "group_localisation/PA_ID": "P-RW-FA0-009-RW5-RW52-GAB",
+      "group_localisation/gps": "-1.5150855 30.3837382 1409.4462899642658 4.862",
+      "group_localisation/village": "GABIRO NYAGATARE ",
+      "group_localisation/village_id": "GAB",
+      "group_photo_activity/photo_1": "1785408981007.jpg",
+      "group_photo_activity/prep_photo": "photo_person",
+      "group_project_info/Institution_financing": "AfDB GOVERNMENT",
+      "group_project_info/L_activit_men_e_sur_ce_site_e": "oui",
+      "group_project_info/Project_ID": "P-RW-FA0-009",
+      "group_project_info/pays": "Rwanda",
+      "info_activity/group_beneficiaries/target_benef": "no",
+      "info_activity/group_beneficiaries/total_beneficiaires": "300",
+      "info_activity/group_client/implementing": "government",
+      "info_activity/group_client/name_implementing": "EDCL-RUEAP",
+      "info_activity/group_contact/name_contact": "Providence cyubahiro ",
+      "info_activity/group_contact/role_contact": "project_staff_member",
+      "info_activity/group_description_act/Niveau_de_r_alisation_de_l_activit": "plus_de_70",
+      "info_activity/group_description_act/Site_name": "Gabiro_ Nyagatare transmission line",
+      "info_activity/group_description_act/descr_activity": "Construction of Gabiro -Nyatare transmission line where by 70 location out of 71 ,foundations works are completed for those 51 towers locations are erected ",
+      "info_activity/group_description_act/sector_activity": "energie",
+      "info_activity/group_description_act/start_date": "2024-01-01",
+      "info_activity/group_description_act/status_activity": "in_progress",
+      "info_activity/group_hw7ei31/Pouvez_vous_pr_ciser_le_co_t_d": "non",
+      "info_activity/group_problem/problem": "yes",
+      "info_activity/group_problem/type_problem": "technical_or_operational_problem",
+      "meta/instanceID": "uuid:759c50c7-49e1-4b35-b650-562f5293686d",
+      "meta/rootUuid": "uuid:759c50c7-49e1-4b35-b650-562f5293686d",
+      "start": "2026-07-30T12:47:07.078+02:00",
+      "today": "2026-07-30",
+      "username": "procyubahiro"
     }
   ],
-  "activities_count": 214,
+  "activities_count": 215,
   "portfolio": [
     {
       "__version__": "vAts4KT3WtLJzSLsuVzcvm",
@@ -38782,5 +38848,5 @@
   ],
   "portfolio_count": 253,
   "success": true,
-  "total_count": 467
+  "total_count": 468
 }
