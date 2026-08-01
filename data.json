@@ -18535,7 +18535,12 @@
       "_submission_time": "2026-07-31T12:20:13",
       "_submitted_by": "gicumbi15kms",
       "_uuid": "a9549931-fdc5-4c0f-8329-795fec8f0f86",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1785597171,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:GPkK1EPk1yx6Huiz",
       "end": "2025-11-12T16:14:12.323+02:00",
