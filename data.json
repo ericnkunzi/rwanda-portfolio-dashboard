@@ -18836,7 +18836,12 @@
       "_submission_time": "2026-08-12T06:54:34",
       "_submitted_by": "thehakizimana",
       "_uuid": "ec3a94e8-d579-4a7c-a297-e105792983ed",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1786521996,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:u9L2vdEN6aTbTYQU",
       "end": "2026-08-12T08:53:47.364+02:00",
@@ -31747,7 +31752,12 @@
       "_submission_time": "2026-08-12T06:54:34",
       "_submitted_by": "thehakizimana",
       "_uuid": "ec3a94e8-d579-4a7c-a297-e105792983ed",
-      "_validation_status": {},
+      "_validation_status": {
+        "by_whom": "rasmerwanda",
+        "label": "Approved",
+        "timestamp": 1786521996,
+        "uid": "validation_status_approved"
+      },
       "_xform_id_string": "aGr5kutzkG7nrHiEyH7vCt",
       "deviceid": "collect:u9L2vdEN6aTbTYQU",
       "end": "2026-08-12T08:53:47.364+02:00",
